@@ -6,19 +6,19 @@ import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs"
 
 const projects = [
   {
-    name: "Thankful Thoughts",
+    name: "Neuromorphic Computing Brain Signal Detection",
     description:
-      "ThankfulThoughts is a web app that generates an appreciative sentence of something or someone you are thankful for.",
-    image: "/thankfulthoughts.png",
-    github: "https://github.com/hqasmei/thankful-thoughts",
-    link: "https://thankfulthoughts.io/",
+      "Developing advanced and cutting edge Artificial Intelligence models, based on Neuromorphic Computatioin, for detection of neural signals.",
+    image: "/overview_workflow.png",
+    github: "https://github.com/MarcosOriolPago/LAVA_SNN_ripples",
+    link: "https://github.com/MarcosOriolPago/LAVA_SNN_ripples",
   },
   {
-    name: "PlatoIO",
-    description: "PlatoIO is a to do list app that built using the PERN stack.",
-    image: "/platoio.png",
-    github: "https://github.com/hqasmei/platoio",
-    link: "https://platoio.com/register",
+    name: "Pitline Brand",
+    description: "Created a T-shirts brand with one of my best friends, and builded the web.",
+    image: "/pitline.png",
+    github: "https://be-pitline.com/",
+    link: "https://be-pitline.com/",
   },
   {
     name: "Kator Family Photos",
