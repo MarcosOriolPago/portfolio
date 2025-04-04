@@ -3,13 +3,21 @@ import { RevealOnScroll } from "../RevealOnScroll";
 export const About = () => {
   const frontendSkills = [
     "React",
-    "Vue",
-    "TypeScript",
+    "Vite",
     "TailwindCSS",
-    "Svelte",
+    "css"
   ];
 
-  const backendSkills = ["Node.js", "Python", "AWS", "MongoDB", "GraphQL"];
+  const backendSkills = ["Node.js", "Python", "php", "JavaScript" ];
+  const machineLearningSkills = [
+    "TensorFlow",
+    "PyTorch",
+    "scikit-learn",
+    "OpenCV",
+    "Microcontroller Deployment",
+    "Signal Processing",
+    "Data Engineering",
+  ];
 
   return (
     <section
@@ -25,8 +33,7 @@ export const About = () => {
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
             <p className="text-gray-300 mb-6">
-              Passionate developer with expertise in building scalable web
-              applications and creating innovative solutions.
+              Bioengineer with solid brackground in software development and a passion for neuroscience.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -54,6 +61,22 @@ export const About = () => {
                       key={key}
                       className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 
                                     hover:shadow-[0_2px_8px_rgba(59,130,2246,0.2)] transition
+                    "
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
+                <h3 className="text-xl font-bold mb-4"> Frontend</h3>
+                <div className="flex flex-wrap gap-2">
+                  {machineLearningSkills.map((tech, key) => (
+                    <span
+                      key={key}
+                      className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 
+                                    hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition
                     "
                     >
                       {tech}

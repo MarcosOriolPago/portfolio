@@ -13,9 +13,9 @@ export const Home = () => {
           </h1>
 
           <p className="tex-gray-400 text-lg mb-8 max-w-lg mx-auto">
-            I’m a full-stack developer who loves crafting clean, scalable web
-            applications. My goal is to build solutions that offer both
-            exceptional performance and a delightful user experience.
+            I’m a Bioengineer and Software Engineer with great motiovation to learn and grow. 
+            I have a solid background in software development, and I am passionate about neuroscience and technology.
+            
           </p>
           <div className="flex justify-center space-x-4">
             <a
