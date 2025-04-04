@@ -14,7 +14,9 @@ export const Projects = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-2"> Cloud Platform</h3>
+              <h3 className="text-xl font-bold mb-2">
+                Neuromorphic Neural Network for detecting High Frequency Oscillating Signals in the ECOG 
+              </h3>
               <p className="text-gray-400 mb-4">
                 Scalable cloud infrastructure management with real-time
                 monitoring and automated scaling.
@@ -49,7 +51,7 @@ export const Projects = () => {
               transition-all
             "
             >
-              <h3 className="text-xl font-bold mb-2">AI Analytics Dashboard</h3>
+              <h3 className="text-xl font-bold mb-2">AI Agent Builder</h3>
               <p className="text-gray-400 mb-4">
                 ML-powered data visualization platform with predictive analytics
                 and interactive reports.
