@@ -30,11 +30,11 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               Home
             </a>
             <a
-              href="#about"
+              href="#work"
               className="text-gray-300 hove:text-white transition-colors"
             >
               {" "}
-              About{" "}
+              Work{" "}
             </a>
             <a
               href="#projects"

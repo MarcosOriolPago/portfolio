@@ -2,13 +2,13 @@ import { useState } from "react";
 import "./App.css";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { Navbar } from "./components/Navbar";
+import Header from "./components/Header";
 import { MobileMenu } from "./components/MobileMenu";
 import Main from "./components/sections/Main";
-import { About } from "./components/sections/About";
-import { Projects } from "./components/sections/Projects";
 import "./index.css";
 import { Contact } from "./components/sections/Contact";
 import Timeline from "./components/sections/Timeline";
+import Projects from "./components/sections/Projects";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,10 +22,10 @@ function App() {
           isLoaded ? "opacity-100" : "opacity-0"
         } bg-black text-gray-100`}
       >
-        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        {/* <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> */}
+        <Navbar />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Main />
-        <About />
         <Timeline />
         <Projects />
         <Contact />
