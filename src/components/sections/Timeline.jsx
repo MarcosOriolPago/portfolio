@@ -8,8 +8,11 @@ import '../../assets/styles/Timeline.scss'
 function Timeline() {
   return (
     <div id="history">
-      <div className="items-container">
-        <h1>Career History</h1>
+      <div className="items-center justify-center">
+        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
+            {" "}
+            Carrer History
+        </h2>
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
