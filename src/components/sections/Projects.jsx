@@ -4,7 +4,8 @@ import SkillIconGroup from '../SkillIconGroup';
 import Background from '../AnimatedBackground';
 import { 
     SiJavascript, SiReact, SiTailwindcss, SiHtml5, SiPhp, SiMysql, SiTensorflow, 
-    SiPython, SiC, SiPandas, SiNumpy, SiGit, SiPytorch, SiLinux
+    SiPython, SiC, SiPandas, SiNumpy, SiGit, SiPytorch, SiVite,
+    SiDocker
   } from 'react-icons/si';
 
 const Projects = () => {
@@ -17,28 +18,46 @@ const Projects = () => {
             </h2>
             <div className="grid flex-col">
                 <ProjectCard
-                    title="Neuromorphic Computation Project"
+                    title="Spiking Neural Networks"
                     description="Neuromorphic computation on low-power microcontrollers for closed-loop signal detection applications."
                     image="../../src/assets/img/loihi2.jpg"
-                    link="https://github.com/yourproject"
+                    link="https://github.com/MarcosOriolPago/LAVA_SNN_ripples"
                     skills={
                         <SkillIconGroup>
-                            <SiReact />
-                            <SiJavascript />
-                            <SiTailwindcss />
+                            <SiPython title="Python" className="text-blue-400"/>
+                            <SiPytorch title="Pytorch" className="text-orange-400" />
+                            <SiNumpy title="Numpy" className="text-blue-900"/>
+                            <SiGit title="Git" className="text-orange-600"/>
                         </SkillIconGroup>
                     }
                 />
                 <ProjectCard
-                    title="AI-Powered App"
-                    description="An AI-based mobile application to automate daily tasks using machine learning."
-                    image="https://via.placeholder.com/400x250"
-                    link="https://github.com/yourproject2"
+                    title="Web Portfolio"
+                    description="Biography and portfolio website showcasing my projects and skills."
+                    image="../src/assets/img/react-docker.png"
+                    link="https://github.com/MarcosOriolPago/portfolio"
                     skills={
                         <SkillIconGroup>
-                            <SiReact />
-                            <SiJavascript />
-                            <SiTailwindcss />
+                            <SiReact title="React" className="text-blue-400"/>
+                            <SiJavascript title="JavaScript" className="text-orange-400" />
+                            <SiTailwindcss title="Tailwindcss" className="text-blue-200"/>
+                            <SiVite title="Vite" className="text-blue-900"/>
+                            <SiDocker title="Docker" className="text-blue-600"/>
+                        </SkillIconGroup>
+                    }
+                />
+                <ProjectCard
+                    title="AI Agent Builder"
+                    description="Frontend development for an AI agent builder, allowing users to create and customize their own AI agents."
+                    image="../src/assets/img/agent-builder.png"
+                    link="https://github.com/AndresOriol/agent_builder_frontend"
+                    skills={
+                        <SkillIconGroup>
+                            <SiReact title="React" className="text-blue-400"/>
+                            <SiJavascript title="JavaScript" className="text-orange-400" />
+                            <SiTailwindcss title="Tailwindcss" className="text-blue-200"/>
+                            <SiVite title="Vite" className="text-blue-900"/>
+                            <SiDocker title="Docker" className="text-blue-600"/>
                         </SkillIconGroup>
                     }
                 />
