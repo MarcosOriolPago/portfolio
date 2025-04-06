@@ -1,7 +1,6 @@
 import React from 'react';
 import ProjectCard from '../ProjectCard';
 import SkillIconGroup from '../SkillIconGroup';
-import Background from '../AnimatedBackground';
 import { 
     SiJavascript, SiReact, SiTailwindcss, SiHtml5, SiPhp, SiMysql, SiTensorflow, 
     SiPython, SiC, SiPandas, SiNumpy, SiGit, SiPytorch, SiVite,
