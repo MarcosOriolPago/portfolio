@@ -1,8 +1,10 @@
 import React from 'react';
-import DoorOpenEffect from './DoorOpenEffect';
+import {ShowContentOnHover} from './ShowContentOnHover';
 
-const ProjectCard = ({ title, description, image, link, skills }) => (
-    <DoorOpenEffect>
+const ProjectCard = ({ title, description, image, link, skills, detailedDescription }) => (
+    <ShowContentOnHover
+        hiddenContent= {detailedDescription}
+    >
         <div className="mx-auto w-[600px] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
             {/* Main Image */}
             <div className="relative">
@@ -24,7 +26,7 @@ const ProjectCard = ({ title, description, image, link, skills }) => (
                 </div>
             </div>
         </div>
-    </DoorOpenEffect>
+    </ShowContentOnHover>
   );
 
 

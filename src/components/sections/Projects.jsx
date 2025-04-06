@@ -9,7 +9,7 @@ import {
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-20">
+        <section id="projects" className="py-10">
         <div className="px-4">
             <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
                 {" "}
@@ -29,6 +29,14 @@ const Projects = () => {
                             <SiGit title="Git" className="text-orange-600"/>
                         </SkillIconGroup>
                     }
+                    detailedDescription={
+                        <table>
+                            <tr><td align="center"><b>Input</b></td></tr>
+                            <tr><td> <img src="img/input.gif"/> </td></tr>
+                            <tr><td align="center"><b>Output</b></td></tr>
+                            <tr><td> <img src="img/output.gif"/> </td></tr>
+                        </table>
+                    }
                 />
                 <ProjectCard
                     title="Web Portfolio"
@@ -47,6 +55,21 @@ const Projects = () => {
                 />
                 <ProjectCard
                     title="AI Agent Builder"
+                    description="Frontend development for an AI agent builder, allowing users to create and customize their own AI agents."
+                    image="img/agent-builder.png"
+                    link="https://github.com/AndresOriol/agent_builder_frontend"
+                    skills={
+                        <SkillIconGroup>
+                            <SiReact title="React" className="text-blue-400"/>
+                            <SiJavascript title="JavaScript" className="text-orange-400" />
+                            <SiTailwindcss title="Tailwindcss" className="text-blue-200"/>
+                            <SiVite title="Vite" className="text-blue-900"/>
+                            <SiDocker title="Docker" className="text-blue-600"/>
+                        </SkillIconGroup>
+                    }
+                />
+                <ProjectCard
+                    title="Rehabilitation RF Car"
                     description="Frontend development for an AI agent builder, allowing users to create and customize their own AI agents."
                     image="img/agent-builder.png"
                     link="https://github.com/AndresOriol/agent_builder_frontend"
