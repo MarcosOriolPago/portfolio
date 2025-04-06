@@ -12,18 +12,37 @@ const ProjectCard = ({ title, description, image, link, skills }) => (
       </div>
   
       {/* Card Content */}
-      <div className="p-6 bg-gradient-to-r from-purple-200 to-indigo-100">
+      <div className="p-6 h-full bg-gradient-to-r from-purple-200 to-indigo-100">
         <h3 className="text-black text-2xl font-semibold">{title}</h3>
         <p className="text-gray-600 mt-2 mb-4">{description}</p>
-        {skills}
+        <div className="flex justify-between">
+            {skills}
+            <CheckRepo link={link} />
+        </div>
       </div>
-      <a
-        href={link}
-        className="block text-center py-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-b-lg transition-colors duration-300 hover:bg-blue-600"
-      >
-        View Project
-      </a>
     </div>
   );
+
+
+const CheckRepo = ({link}) => {
+    return (
+        <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-purple-400 hover:text-purple-300 transition-colors duration-300"
+        >
+        Check Repository
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 rotate-180"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path d="M2 12l19-9-4 9 4 9-19-9z" />
+        </svg>
+        </a>
+    )
+}
 
 export default ProjectCard;

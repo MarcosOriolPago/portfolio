@@ -16,11 +16,11 @@ const Projects = () => {
                 {" "}
                 Projects
             </h2>
-            <div className="grid flex-col">
+            <div className="grid flex-col sm:grid-cols-2 gap-8 ">
                 <ProjectCard
                     title="Spiking Neural Networks"
                     description="Neuromorphic computation on low-power microcontrollers for closed-loop signal detection applications."
-                    image="../../src/assets/img/loihi2.jpg"
+                    image="src/assets/img/loihi2.jpg"
                     link="https://github.com/MarcosOriolPago/LAVA_SNN_ripples"
                     skills={
                         <SkillIconGroup>
@@ -34,7 +34,7 @@ const Projects = () => {
                 <ProjectCard
                     title="Web Portfolio"
                     description="Biography and portfolio website showcasing my projects and skills."
-                    image="../src/assets/img/react-docker.png"
+                    image="src/assets/img/react-docker.png"
                     link="https://github.com/MarcosOriolPago/portfolio"
                     skills={
                         <SkillIconGroup>
@@ -49,7 +49,7 @@ const Projects = () => {
                 <ProjectCard
                     title="AI Agent Builder"
                     description="Frontend development for an AI agent builder, allowing users to create and customize their own AI agents."
-                    image="../src/assets/img/agent-builder.png"
+                    image="src/assets/img/agent-builder.png"
                     link="https://github.com/AndresOriol/agent_builder_frontend"
                     skills={
                         <SkillIconGroup>
