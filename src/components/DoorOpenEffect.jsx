@@ -5,14 +5,12 @@ export const DoorOpenEffect = ({children}) => {
 
   return (
     <div
-      className="max-w-md mx-auto perspective-[600px]"
+      className="perspective-[1000px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="
-          transition-transform duration-500 transform-gpu
-        "
+        className={`transition-transform duration-1000 transform-gpu ${hovered ? "-translate-x-80" : ""}`}
         style={{
           transformStyle: "preserve-3d",
           transform: hovered ? "rotateY(45deg)" : "rotateY(0deg)",

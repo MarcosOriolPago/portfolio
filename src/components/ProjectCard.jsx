@@ -3,7 +3,7 @@ import DoorOpenEffect from './DoorOpenEffect';
 
 const ProjectCard = ({ title, description, image, link, skills }) => (
     <DoorOpenEffect>
-        <div className="relative border border-gray-400 shadow-lg rounded-lg overflow-hidden">
+        <div className="mx-auto w-[600px] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
             {/* Main Image */}
             <div className="relative">
                 <img
