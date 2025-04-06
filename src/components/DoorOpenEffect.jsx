@@ -1,12 +1,25 @@
-import React from "react";
+import { useState } from "react";
 
-const DoorOpenEffect = ({ children }) => {
+export const DoorOpenEffect = ({children}) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div className="absolute left-1/2 p-4 top-1/2  flex justify-start items-start  rounded-2xl  shadow-[0_8px_16px_rgb(0_0_0/0.4)] border border-white/[0.1] group-hover/pin:border-white/[0.2] transition duration-700 overflow-hidden"
-         style = {{transform: "translate(-50%, -50%) rotateX(0deg) scale(1)"}}
+    <div
+      className="max-w-md mx-auto perspective-[600px]"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
+      <div
+        className="
+          transition-transform duration-500 transform-gpu
+        "
+        style={{
+          transformStyle: "preserve-3d",
+          transform: hovered ? "rotateY(45deg)" : "rotateY(0deg)",
+        }}
+      >
         {children}
-
+      </div>
     </div>
   );
 };
