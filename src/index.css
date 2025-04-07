@@ -33,6 +33,7 @@ body {
     }
   }
 
+
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
   }

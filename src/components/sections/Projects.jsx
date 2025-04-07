@@ -7,6 +7,7 @@ import {
     SiDocker
   } from 'react-icons/si';
 
+
 const Projects = () => {
     return (
         <section id="projects" className="py-10">
@@ -30,12 +31,19 @@ const Projects = () => {
                         </SkillIconGroup>
                     }
                     detailedDescription={
-                        <table>
-                            <tr><td align="center"><b>Input</b></td></tr>
-                            <tr><td> <img src="img/input.gif"/> </td></tr>
-                            <tr><td align="center"><b>Output</b></td></tr>
-                            <tr><td> <img src="img/output.gif"/> </td></tr>
-                        </table>
+                        <div className="overflow-y-scroll scrollbar-hidden h-120">
+                            <p className="text-gray-400 mt-2 mb-4">
+                                This project implements a Spiking Neural Network (SNN) model for detecting ripples in neural signals. 
+                                The SNN is designed to run on low-power microcontrollers, making it suitable for real-time applications in closed-loop systems.
+                            </p>
+                            <table>
+                                <tr><td align="center"><b>Input</b></td></tr>
+                                <tr><td> <img src="img/input.gif"/> </td></tr>
+                                <tr><td align="center"><b>Output</b></td></tr>
+                                <tr><td> <img src="img/output.gif"/> </td></tr>
+                            </table>
+                            <img src="img/overview_workflow.png" alt="" />
+                        </div>
                     }
                 />
                 <ProjectCard

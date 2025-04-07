@@ -1,33 +1,46 @@
 import React from 'react';
-import {ShowContentOnHover} from './ShowContentOnHover';
+import { useState } from 'react';
+import {ShowContentOnClick} from './ShowContentOnClick';
+import SeeMoreButton from './buttons/SeeMoreButton';
 
-const ProjectCard = ({ title, description, image, link, skills, detailedDescription }) => (
-    <ShowContentOnHover
-        hiddenContent= {detailedDescription}
-    >
-        <div className="mx-auto w-[600px] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
-            {/* Main Image */}
-            <div className="relative">
-                <img
-                src={image}
-                alt={title}
-                className="w-full h-56 sm:h-64 object-cover transition-all duration-300 ease-in-out hover:brightness-75"
-                />
-            </div>
-        
-            {/* Card Content */}
-            <div className="p-6 h-60 bg-gradient-to-r from-purple-200 to-indigo-100 flex flex-col">
-                <h3 className="text-black text-2xl font-semibold">{title}</h3>
-                <p className="text-gray-600 mt-2 mb-4">{description}</p>
-                <div className="flex-grow" />
-                <div className="flex justify-between">
-                    {skills}
-                    <CheckRepo link={link} />
+import '../assets/styles/Projects.scss';
+
+
+function ProjectCard ({ title, description, image, link, skills, detailedDescription }) {
+    
+    const [clicked, setClicked] = useState(false);
+    
+    return (
+        <ShowContentOnClick
+            hiddenContent= {detailedDescription}
+            clicked={clicked}
+            setClicked={setClicked}
+        >
+            <div className="mx-auto w-[500px] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
+                {detailedDescription && <SeeMoreButton clicked={clicked} setClicked={setClicked} />}
+                {/* Main Image */}
+                <div className="relative">
+                    <img
+                    src={image}
+                    alt={title}
+                    className="w-full h-56 sm:h-64 object-cover transition-all duration-300 ease-in-out hover:brightness-75"
+                    />
+                </div>
+            
+                {/* Card Content */}
+                <div className="p-6 h-60 bg-gradient-to-r from-purple-200 to-indigo-100 flex flex-col">
+                    <h3 className="text-black text-2xl font-semibold">{title}</h3>
+                    <p className="text-gray-600 mt-2 mb-4">{description}</p>
+                    <div className="flex-grow" />
+                    <div className="flex justify-between">
+                        {skills}
+                        {link && <CheckRepo link={link} />}
+                    </div>
                 </div>
             </div>
-        </div>
-    </ShowContentOnHover>
-  );
+        </ShowContentOnClick>
+    )
+};
 
 
 const CheckRepo = ({link}) => {
@@ -50,5 +63,7 @@ const CheckRepo = ({link}) => {
         </a>
     )
 }
+
+
 
 export default ProjectCard;
