@@ -62,10 +62,10 @@ const Projects = () => {
                                     <tr><td> <img src="img/output.gif"/> </td></tr>
                                 </tbody>
                             </table>
-                            <p className="inner-p">
-                                The network provides an output for each time input. When Sharp Wave Ripples arrive, the output neurons from the 
+                            <figcaption>
+                                <strong>Figure 2: </strong> The network provides an output for each time input. When Sharp Wave Ripples arrive, the output neurons from the 
                                 network fire faster in the neuron from label "Signal Detected", otherwise they fire "No Signal Detected". 
-                            </p>
+                            </figcaption>
                         </InnerProjectDescription>
                     }
                 />
