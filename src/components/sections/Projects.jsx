@@ -1,12 +1,15 @@
 import React from 'react';
 import ProjectCard from '../ProjectCard';
 import SkillIconGroup from '../SkillIconGroup';
+import InnerProjectDescription from './InnerProjectDescription';
 import { 
     SiJavascript, SiReact, SiTailwindcss, SiHtml5, SiPhp, SiMysql, SiTensorflow, 
     SiPython, SiC, SiArduino, SiNumpy, SiGit, SiPytorch, SiVite,
     SiDocker
   } from 'react-icons/si';
 
+import "../../assets/styles/text.scss";
+import "../../assets/styles/Projects.scss";
 
 const Projects = () => {
     return (
@@ -31,19 +34,39 @@ const Projects = () => {
                         </SkillIconGroup>
                     }
                     detailedDescription={
-                        <div className="overflow-y-scroll h-120">
-                            <p className="text-gray-400 mt-2 mb-4">
-                                This project implements a Spiking Neural Network (SNN) model for detecting ripples in neural signals. 
-                                The SNN is designed to run on low-power microcontrollers, making it suitable for real-time applications in closed-loop systems.
+                        <InnerProjectDescription>
+                            <p className='inner-p'>
+                                <strong className="text-orange-200">Context</strong><br />
+                                Spiking Neural Networks (SNNs) work similar to other classical neural networks. However, they involve time in the equation. 
+                                By mimicking the membrane potential of biological neurons, each node will get charged when receiving an input, and discharged 
+                                through each time step. Therefore, the network learns to detect a pattern of values in a sequence of time. 
+                                This makes them ideal for time domain applications, such as signal detection.
+                                <br/>
+                                <strong className="text-orange-200">Goal</strong><br />
+                                This project consisted in applying a SNN for detecting Sharp Wave Ripples, a characteristical brain signal pattern
+                                present in epilepsy.
                             </p>
-                            <table>
-                                <tr><td align="center"><b>Input</b></td></tr>
-                                <tr><td> <img src="img/input.gif"/> </td></tr>
-                                <tr><td align="center"><b>Output</b></td></tr>
-                                <tr><td> <img src="img/output.gif"/> </td></tr>
-                            </table>
                             <img src="img/overview_workflow.png" alt="" />
-                        </div>
+                            <figcaption>
+                                <strong>Figure 1: </strong>Eact timestep, a value of the signal arrives to a specific neuron from the input layer
+                                of the network. In this case, the high frequency oscillating signal stimulated the input neurons in a specific pattern.
+                                This pattern is what the network learned during the training, and could easily detect afterwards.
+                            </figcaption>
+                            <br />
+                            <strong className="text-orange-200">Result</strong><br />
+                            <table>
+                                <tbody>
+                                    <tr><td align="center"><b>Input</b></td></tr>
+                                    <tr><td> <img src="img/input.gif"/> </td></tr>
+                                    <tr><td align="center"><b>Output</b></td></tr>
+                                    <tr><td> <img src="img/output.gif"/> </td></tr>
+                                </tbody>
+                            </table>
+                            <p className="inner-p">
+                                The network provides an output for each time input. When Sharp Wave Ripples arrive, the output neurons from the 
+                                network fire faster in the neuron from label "Signal Detected", otherwise they fire "No Signal Detected". 
+                            </p>
+                        </InnerProjectDescription>
                     }
                 />
                 <ProjectCard

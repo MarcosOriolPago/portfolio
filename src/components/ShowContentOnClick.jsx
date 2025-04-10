@@ -11,11 +11,11 @@ export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicke
   }, [clicked]);
 
   return (
-    <div className={`relative w-full flex justify-center items-center z-50 perspective-[1000px]`}>
+    <div className={`relative w-full flex justify-center items-center perspective-[1000px]`}>
       {/* Main content with rotation and slide on click */}
       <div
         className={`transition-transform duration-1000 transform-gpu ${
-          showHidden && hiddenContent ? "-translate-x-[80%]" : ""
+          showHidden && hiddenContent ? "-translate-x-[100%]" : ""
         }`}
         style={{
           transformStyle: "preserve-3d",
@@ -29,9 +29,7 @@ export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicke
 
       {/* Hidden content revealed on click */}
       {appearWait && showHidden && hiddenContent && (
-        <div className={`
-        absolute p-4 w-[60%] border-3 border-indigo-300 rounded-xl border-dashed 
-        shadow-lg ${clicked ? 'translate-x-[30%]' : ''}`}>
+        <div className={`absolute w-[65%] ${clicked ? 'translate-x-[25%]' : ''}`}>
           <SeeLessButton clicked={clicked} setClicked={setClicked} />
           {hiddenContent}
         </div>
