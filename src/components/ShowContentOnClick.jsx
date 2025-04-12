@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import SeeLessButton from "./buttons/SeeLessButton";
+import { motion } from "framer-motion";
 
-export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicked}) => {
+export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicked }) => {
   const [showHidden, setShowHidden] = useState(false);
   const [appearWait, setAppearWait] = useState(false);
 
@@ -11,28 +12,41 @@ export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicke
   }, [clicked]);
 
   return (
-    <div className={`relative w-full flex justify-center items-center perspective-[1000px]`}>
-      {/* Main content with rotation and slide on click */}
-      <div
-        className={`transition-transform duration-1000 transform-gpu ${
-          showHidden && hiddenContent ? "-translate-x-[100%]" : ""
-        }`}
-        style={{
-          transformStyle: "preserve-3d",
-          transform: showHidden && hiddenContent
-            ? "rotateY(45deg) scaleX(0.6) scaleY(0.7)"
-            : "rotateY(0deg) scaleX(1) scaleY(1)",
+    <div className="relative flex justify-center items-center gap-6 perspective-[1000px]">
+      {/* Main Card */}
+      <motion.div
+        initial={false}
+        animate={{
+          // Ensure the card is centered for those with no inner content
+          x: showHidden && hiddenContent ? "-80%" : "0%", // Center or move left depending on the state
+          rotateY: showHidden && hiddenContent ? 45 : 0,
+          scaleX: showHidden && hiddenContent ? 0.5 : 1,
+          scaleY: showHidden && hiddenContent ? 0.7 : 1,
         }}
+        transition={{
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="relative transform-gpu"
       >
         {children}
-      </div>
+      </motion.div>
 
-      {/* Hidden content revealed on click */}
-      {appearWait && showHidden && hiddenContent && (
-        <div className={`absolute w-[65%] ${clicked ? 'translate-x-[25%]' : ''}`}>
+      {/* Hidden Content - Always mounted, just animated */}
+      {hiddenContent && (
+        <motion.div
+          animate={{
+            opacity: showHidden ? 1 : 0,
+            x: showHidden ? "55%" : 0,
+            pointerEvents: showHidden ? "auto" : "none", // prevent clicking when hidden
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="absolute left-1/3 transform -translate-x-1/2 max-w-[clamp(300px,90%,800px)]"
+        >
           <SeeLessButton clicked={clicked} setClicked={setClicked} />
           {hiddenContent}
-        </div>
+        </motion.div>
       )}
     </div>
   );

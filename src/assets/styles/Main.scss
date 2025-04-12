@@ -4,11 +4,11 @@
 
 .about-section {
     display: flex;
-    gap: 30px;
+    gap: clamp(1rem, 3vw, 4rem);
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    padding: 0px 15%;
+    padding-inline: clamp(1rem, 10vw, 15%);
     min-height: 700px;
     background-image: url("/bg-dark.png");
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@
 .about-section .image-wrapper {
     z-index: 2;
     img {
-        width: 500px;
+        width: clamp(200px, 40vw, 500px);
         border-radius: 50%;
     }
 }
@@ -79,7 +79,7 @@
         }
 
         .nav-right li {
-            padding: 10px 15px;
+            padding-inline: clamp(1rem, 10vw, 15%);
             list-style:none;
             font-size:13px;
             color:white;

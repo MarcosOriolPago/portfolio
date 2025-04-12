@@ -25,9 +25,7 @@ export default function InnerProjectDescription({ children }) {
 
 
     return (
-        <div className="overflow-y-scroll h-120 scrollbar-hide border-3 border-indigo-300 rounded-xl border-dashed shadow-lg p-4" 
-            ref={scrollRef}
-        >
+        <div className="relative h-120 border-3 border-indigo-300 rounded-xl border-dashed shadow-lg p-4">
             {showTopShadow && (
                 <div className="pointer-events-none absolute rounded-xl top-0 left-0 right-0 h-6 bg-gradient-to-b from-indigo-200 to-transparent z-10" />
             )}
@@ -36,7 +34,12 @@ export default function InnerProjectDescription({ children }) {
             {showBottomShadow && (
                 <div className="pointer-events-none absolute rounded-xl bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-indigo-300 to-transparent z-10" />
             )}
-            {children}
+        
+            <div className="overflow-y-scroll scrollbar-hide h-full" 
+                ref={scrollRef}
+            >
+                {children}
+            </div>
         </div>
     )
 }
