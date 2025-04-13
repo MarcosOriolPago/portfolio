@@ -7,8 +7,8 @@ function Main() {
 
   return (
     <section
-      id="home"
-      className="min-h-screen flex items-center justify-center py-20"
+      id="main"
+      className="min-h-screen flex items-center justify-center"
     >
         <div className="container">
         <div className="about-section">

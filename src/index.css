@@ -52,3 +52,39 @@ body::-webkit-scrollbar {
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} 
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 6s ease infinite;
+}
+
+@keyframes gradient-y-background {
+  0% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
+
+.animate-gradient-y {
+  background: linear-gradient(to top, #1214162e, #5a43ed); /* blue-500 → purple-600 → cyan-500 */
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  animation: gradient-y-background 20s ease infinite;
+}

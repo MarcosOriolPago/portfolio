@@ -1,15 +1,16 @@
 
 import { useEffect } from "react";
+import ViewPageButton from "./buttons/ViewPageButton";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
   return (
-    <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
+    <nav className="fixed top-10 left-[20%] right-[20%] w-auto z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-lg border border-white/10 shadow-lg rounded-2xl">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <a href="#home" className="font-mono text-xl font-bold text-white">
+          <a href="#main" className="font-mono text-xl font-bold text-white">
             {" "}
             marcos<span className="text-blue-500">.tech</span>{" "}
           </a>
@@ -20,10 +21,9 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
           >
             &#9776;
           </div>
-
           <div className="hidden md:flex items-center space-x-8">
             <a
-              href="#home"
+              href="#main"
               className="text-gray-300 hove:text-white transition-colors"
             >
               {" "}
@@ -51,6 +51,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               Contact{" "}
             </a>
           </div>
+          <ViewPageButton page="about" text="About Me" />
         </div>
       </div>
     </nav>
