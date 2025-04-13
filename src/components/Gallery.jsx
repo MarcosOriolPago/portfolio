@@ -2,26 +2,22 @@ import React from "react";
 
 export default function Gallery({ imgs_folder }) {
     return (
-      <div className="m-10">
         <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
-          {imgs_folder.map((img, index) => (
+            {imgs_folder.map((img, index) => (
             <div key={index} className="mb-4 break-inside-avoid">
-              <Img path={img} />
+                <Img path={img} />
             </div>
-          ))}
+            ))}
         </div>
-      </div>
     );
-  }
-  
-  
+}
 
-  function Img({ path }) {
+function Img({ path }) {
     return (
-      <img
+        <img
         src={path}
         className="w-full h-auto rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105"
         loading="lazy"
-      />
+        />
     );
-  }
+}
