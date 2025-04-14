@@ -115,9 +115,11 @@ const Projects = () => {
                     }
                     detailedDescription={
                         <InnerProjectDescription>
-                            <tbody>
-                                <tr><td> <img src="img/cachiao.gif"/> </td></tr>
-                            </tbody>
+                            <table>
+                                <tbody>
+                                    <tr><td> <img src="img/cachiao.gif"/> </td></tr>
+                                </tbody>
+                            </table>
                         </InnerProjectDescription>
                     }
                 />
