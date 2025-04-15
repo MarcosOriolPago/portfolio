@@ -38,34 +38,53 @@ const MySelf = () => {
 }
 
 const CarouselProfile = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const imagePaths = [
-        "/gallery/profileCarousel/profile.jpg",
-        "/gallery/profileCarousel/profile1.jpg",
-        "/gallery/profileCarousel/profile1.jpg",
-        "/gallery/profileCarousel/profile1.jpg",
-        // Add more images as needed
+        "/profileCarousel/calcot.jpg",
+        "/profileCarousel/cruzcampo.jpg",
+        "/profileCarousel/moto_pitline.jpg",
+        "/profileCarousel/paella.jpg",
+        "/profileCarousel/oporto_insta.jpg",
+        "/profileCarousel/sunset_skimo.jpg",
+        "/profileCarousel/moto_carmen.JPG",
+        "/profileCarousel/enduro_cerdaña.jpg",
+        "/profileCarousel/kenia_canoa.jpg",
+        "/profileCarousel/napolesprpr.jpg",
+        "/profileCarousel/inspira.jpg",
+        "/profileCarousel/prismas.jpg",
+        "/profileCarousel/pitline_valldaran.jpg",
+        "/profileCarousel/oporto_algarve.jpg",
+        "/profileCarousel/carmen_galicia.JPG",
+        "/profileCarousel/enduro_chamonix.jpg",
       ];
   
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [fade, setFade] = useState(true);
+
     useEffect(() => {
-      const interval = setInterval(() => {
+    const interval = setInterval(() => {
+        setFade(false); // Start fade out
+
+        setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
-      }, 3000); // change image every 3 seconds
-  
-      return () => clearInterval(interval); // clean up
+        setFade(true); // Fade in new image
+        }, 500); // duration of fade out
+    }, 4000);
+
+    return () => clearInterval(interval);
     }, []);
-  
+
     return (
-      <div className="flex items-center justify-center mb-4">
+    <div className="flex items-center justify-center mb-4 relative w-80 h-80">
         <img
-          src={imagePaths[currentIndex]}
-          alt="Profile"
-          className="w-52 h-52 object-cover rounded-2xl shadow-lg border-2 border-blue-500 transition-all duration-700 ease-in-out"
-          key={currentIndex} // helps with triggering animation
+        src={imagePaths[currentIndex]}
+        alt="Profile"
+        className={`absolute w-full h-full object-cover rounded-2xl shadow-lg border-2 border-blue-500 transition-opacity duration-700 ${
+            fade ? "opacity-100" : "opacity-0"
+        }`}
         />
-      </div>
+    </div>
     );
-  };
+};
   
 
 const Section = ({children}) => {
