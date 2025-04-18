@@ -16,12 +16,11 @@ export default function About() {
             </div>
             <VNavBar />
 
-            {/* Sections */}
-            <div className="relative z-10">
-                <MySelf id="Myself" />
-                <Coocking id="Coocking" />
-                <Sports id="Sports" />
-            </div>
+            <MySelf id="Myself" />
+            <Coocking id="Coocking" />
+            <Sports id="Sports" />
+            <Music id="Music" />
+
         </>
     )
 }
@@ -61,7 +60,9 @@ const Sports = ({id}) => {
             <Gallery imgs_folder={
                 [
                     "/gallery/sports/chamonix.jpg", "/gallery/sports/jump.png", "/gallery/sports/moto.jpg", "/gallery/sports/moto.gif",
-                    "/gallery/sports/bike.gif", "/gallery/sports/padel.jpg", 
+                    "/gallery/sports/bike.gif", "/gallery/sports/runner.jpg", "/gallery/sports/runner.gif", "/gallery/sports/padel.jpg", 
+                    "/gallery/sports/ski.jpg", 
+                    "/gallery/sports/ski.gif",
                 ]} />
         </Section>
     )
@@ -115,6 +116,19 @@ const CarouselProfile = () => {
     </div>
     );
 };
+
+
+const Music = ({id}) => {
+    return (
+        <Section title="Music" id={id}>
+            <Gallery imgs_folder={
+                [
+                    "/gallery/music/acoustic.gif", "/gallery/music/inspira2.jpg", "/gallery/music/quilombo.gif", "/gallery/music/bodapilar.gif",
+                    "/gallery/music/nota79.gif", "/gallery/music/cerdaña.jpg", "/gallery/music/navidad.jpg"
+                ]} />
+        </Section>
+    )
+}
   
 
 const Section = ({ title, children, id}) => {
@@ -135,7 +149,7 @@ const Section = ({ title, children, id}) => {
         {/* Collapsible content */}
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+            isOpen ? "max-h-auto opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="py-4">{children}</div>
