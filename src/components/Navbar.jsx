@@ -23,13 +23,6 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a
-              href="#main"
-              className="text-gray-300 hove:text-white transition-colors"
-            >
-              {" "}
-              Home
-            </a>
-            <a
               href="#work"
               className="text-gray-300 hove:text-white transition-colors"
             >

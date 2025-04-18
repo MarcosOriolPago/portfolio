@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react"; // optional icon
 import ViewPageButton from "../components/buttons/ViewPageButton";
 import VNavBar from "../components/VNavBar";
 import Gallery from "../components/Gallery";
-
+import VisitedPlacesGlobe from "../components/VisitedPlacesGlobe";
 
 export default function About() {
     const textBack = "Return Home"
@@ -20,6 +20,9 @@ export default function About() {
             <Coocking id="Coocking" />
             <Sports id="Sports" />
             <Music id="Music" />
+            <Travelling id="Travelling" >
+                <VisitedPlacesGlobe />
+            </Travelling>
 
         </>
     )
@@ -64,6 +67,27 @@ const Sports = ({id}) => {
                     "/gallery/sports/ski.jpg", 
                     "/gallery/sports/ski.gif",
                 ]} />
+        </Section>
+    )
+}
+
+const Music = ({id}) => {
+    return (
+        <Section title="Music" id={id}>
+            <Gallery imgs_folder={
+                [
+                    "/gallery/music/acoustic.gif", "/gallery/music/inspira2.jpg", "/gallery/music/quilombo.gif", "/gallery/music/bodapilar.gif",
+                    "/gallery/music/nota79.gif", "/gallery/music/cerdaña.jpg", "/gallery/music/navidad.jpg"
+                ]} />
+        </Section>
+    )
+}
+  
+
+const Travelling = ({children, id}) => {
+    return (
+        <Section title="Travelling" id={id}>
+            {children}
         </Section>
     )
 }
@@ -118,19 +142,6 @@ const CarouselProfile = () => {
 };
 
 
-const Music = ({id}) => {
-    return (
-        <Section title="Music" id={id}>
-            <Gallery imgs_folder={
-                [
-                    "/gallery/music/acoustic.gif", "/gallery/music/inspira2.jpg", "/gallery/music/quilombo.gif", "/gallery/music/bodapilar.gif",
-                    "/gallery/music/nota79.gif", "/gallery/music/cerdaña.jpg", "/gallery/music/navidad.jpg"
-                ]} />
-        </Section>
-    )
-}
-  
-
 const Section = ({ title, children, id}) => {
     const [isOpen, setIsOpen] = useState(false);
   
@@ -149,7 +160,7 @@ const Section = ({ title, children, id}) => {
         {/* Collapsible content */}
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isOpen ? "max-h-auto opacity-100" : "max-h-0 opacity-0"
+            isOpen ? "opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="py-4">{children}</div>
