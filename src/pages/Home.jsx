@@ -6,6 +6,7 @@ import Main from "../components/sections/Main";
 import { Contact } from "../components/sections/Contact";
 import Timeline from "../components/sections/Timeline";
 import Projects from "../components/sections/Projects";
+import { Footer } from "../components/Footer";
 
 function Home() {
   const [isLoaded, setIsLoaded] = useState(() => {
@@ -34,6 +35,7 @@ function Home() {
         <Timeline />
         <Projects />
         <Contact />
+        <Footer />
       </div>
     </>
   );

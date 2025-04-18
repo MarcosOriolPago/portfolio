@@ -5,6 +5,7 @@ import ViewPageButton from "../components/buttons/ViewPageButton";
 import VNavBar from "../components/VNavBar";
 import Gallery from "../components/Gallery";
 import VisitedPlacesGlobe from "../components/VisitedPlacesGlobe";
+import {Footer} from "../components/Footer";
 
 export default function About() {
     const textBack = "Return Home"
@@ -24,6 +25,7 @@ export default function About() {
                 <VisitedPlacesGlobe />
             </Travelling>
 
+            <Footer />
         </>
     )
 }
