@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Gallery({ imgs_folder }) {
     return (
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
+        <div className="columns-1 sm:columns-6 md:columns-3 lg:columns-4 gap-6">
             {imgs_folder.map((img, index) => (
-            <div key={index} className="mb-4 break-inside-avoid">
+            <div key={index} className="mb-6 break-inside-avoid">
                 <Img path={img} />
             </div>
             ))}

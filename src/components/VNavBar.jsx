@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { User, Utensils, Bike, Plane } from "lucide-react";
+import { User, Utensils, Bike, Plane, Music } from "lucide-react";
 
-const iconSize = 25;
+const iconSize = 24;
+
 const sections = [
-  { id: "My self", icon: <User size={iconSize} /> },
-  { id: "Coocking", icon: <Utensils size={iconSize} /> },
-  { id: "Sports", icon: <Bike size={iconSize} /> },
-  { id: "Travelling", icon: <Plane size={iconSize} /> }
+  { id: "Myself", icon: User },
+  { id: "Coocking", icon: Utensils }, // double-check this ID matches the section
+  { id: "Sports", icon: Bike },
+  { id: "Music", icon: Music },
+  { id: "Travelling", icon: Plane }
 ];
 
 export default function VerticalNav() {
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState("Myself");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,21 +33,22 @@ export default function VerticalNav() {
 
   return (
     <div className="
-        fixed top-[10%] bottom-[10%] right-[1%] z-40 p-2 shadow-lg rounded-2xl 
-        flex flex-col items-center backdrop-blur-md pt-25 pb-25 justify-between
-        bg-gradient-to-r from-blue-500 via-purple-600 to-cyan-500 opacity-70 group-hover:opacity-100 animate-gradient-y
+      fixed right-6 top-1/2 -translate-y-1/2 z-50
+      bg-black/30 backdrop-blur-md rounded-3xl p-3
+      flex flex-col gap-8 items-center shadow-lg border border-white/10
     ">
-      {sections.map((section) => (
+      {sections.map(({ id, icon: Icon }) => (
         <a
-          key={section.id}
-          href={`#${section.id}`}
-          className={`p-2 rounded-full transition-all duration-300 ${
-            active === section.id
-              ? "bg-indigo-500 text-white scale-110 shadow-md"
-              : "text-gray-400 hover:text-white"
-          }`}
+          key={id}
+          href={`#${id}`}
+          className={`
+            group p-2 rounded-full transition-all duration-300
+            ${active === id 
+              ? "bg-gradient-to-br from-blue-500 to-purple-600 text-white scale-110 shadow-md"
+              : "text-gray-400 hover:text-white hover:scale-110"}
+          `}
         >
-          {section.icon}
+          <Icon size={iconSize} />
         </a>
       ))}
     </div>
