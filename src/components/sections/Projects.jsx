@@ -2,8 +2,9 @@ import React from 'react';
 import ProjectCard from '../ProjectCard';
 import SkillIconGroup from '../SkillIconGroup';
 import InnerProjectDescription from './InnerProjectDescription';
+import Gallery from '../Gallery';
 import { 
-    SiJavascript, SiReact, SiTailwindcss, SiHtml5, SiPhp, SiMysql, SiTensorflow, 
+    SiJavascript, SiReact, SiTailwindcss, SiGooglecloud, 
     SiPython, SiC, SiArduino, SiNumpy, SiGit, SiPytorch, SiVite,
     SiDocker
   } from 'react-icons/si';
@@ -72,15 +73,16 @@ const Projects = () => {
                 <ProjectCard
                     title="Web Portfolio"
                     description="Biography and portfolio website showcasing my projects and skills."
-                    image="img/react-docker.png"
+                    image="img/portfolio-main.png"
                     link="https://github.com/MarcosOriolPago/portfolio"
                     skills={
                         <SkillIconGroup>
                             <SiReact title="React" className="text-blue-400"/>
                             <SiJavascript title="JavaScript" className="text-orange-400" />
-                            <SiTailwindcss title="Tailwindcss" className="text-blue-200"/>
+                            <SiTailwindcss title="Tailwindcss" className="text-blue-300"/>
                             <SiVite title="Vite" className="text-blue-900"/>
                             <SiDocker title="Docker" className="text-blue-600"/>
+                            <SiGooglecloud title="Google Cloud" className="text-blue-500"/>
                         </SkillIconGroup>
                     }
                 />
@@ -115,6 +117,23 @@ const Projects = () => {
                     }
                     detailedDescription={
                         <InnerProjectDescription>
+                            <p className='inner-p'>
+                                <strong className="text-orange-200">Context</strong><br />
+                                This project consisted in developing a radiocontrolled car for rehabilitation purposes. 
+                                The car was designed to be used by patients with arm disabilities, allowing them to control the car with their arm movements.
+                                <br/>
+                                <strong className="text-orange-200">Goal</strong><br />
+                                The goal of this project was to develop a fully 3D printed car that could be controlled by two Arduinos. 
+                                The car was designed to be used in rehabilitation sessions, allowing patients to control the car with their arm movements.
+                                <br />
+                                <strong className="text-orange-200">Development</strong><br /><br />
+                                <Gallery 
+                                    imgs_folder={["img/bluetooth.jpg", "img/cars1.jpg", "img/car_stage1.jpg", "img/car_run.gif", "img/cars_wires.jpg" ]}
+                                >
+                                </Gallery>
+                                <br/>
+                                <strong className="text-orange-200">Result</strong><br />
+                            </p>
                             <table>
                                 <tbody>
                                     <tr><td> <img src="img/cachiao.gif"/> </td></tr>

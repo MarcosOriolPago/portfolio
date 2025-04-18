@@ -39,7 +39,8 @@ const MySelf = ({id}) => {
             <p className="text-lg text-center max-w-3xl">
                 I am an energyc and optimistic person with great motivation to learn and grow. I find the 
                 world fascinating, specifically the biological systems. My ambition lead me to learn software 
-                due to its versatility and countless applications. 
+                engineering due to its versatility and countless applications. 
+                <br /><br />
                 Aside being an eager learner, I like spending time with friends, 
                 doing sport, and enjoying nature. These activities help me to stay on track.
             </p>
@@ -148,7 +149,7 @@ const Section = ({ title, children, id}) => {
     const [isOpen, setIsOpen] = useState(false);
   
     return (
-      <div className="mx-20" id={id}>
+      <div className="mx-10" id={id}>
         <div
           className="bg-gray-800 p-4 rounded-lg shadow-md mb-4 text-center cursor-pointer select-none flex justify-between items-center"
           onClick={() => setIsOpen(!isOpen)}

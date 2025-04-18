@@ -12,7 +12,7 @@ export const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
 
             <div className="text-center sm:text-left">
-              <a href="#Myself" className="font-mono text-lg font-bold text-white">
+              <a href="" className="font-mono text-lg font-bold text-white">
                 marcos<span className="text-blue-500">.tech</span>
               </a>
             </div>
