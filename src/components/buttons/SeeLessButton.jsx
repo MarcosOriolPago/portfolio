@@ -6,12 +6,14 @@ function SeeLessButton ({clicked, setClicked}) {
         <button
             onClick={() => setClicked(prev => !prev)}
             className={`
-                absolute top-1/2 transform -translate-y-1/2 
-                p-2 hover:scale-110 transition-all duration-300 z-10
+                absolute z-10 p-2 transition-all duration-300 
                 text-indigo-200 hover:text-indigo-400 cursor-pointer
-                bounce-x -left-[8vw]
-                ${clicked ? 'absolute' : 'hidden'} 
-            `}
+                hover:scale-110 bounce-x
+                ${clicked ? 'block' : 'hidden'}
+                
+                lg:top-1/2 lg:-translate-y-1/2 lg:left-[-5vw]
+                top-auto left-1/3 -translate-x-1/2 bottom-4 translate-y-[15vw]
+              `}
         >
             <div className="flex">
                 <ChevronRight className="animate-pulse rotate-180" />

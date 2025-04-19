@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import SeeLessButton from "./buttons/SeeLessButton";
 import { motion } from "framer-motion";
+import useIsLargeScreen from "../hooks/useIsLargeScreen";
 
 export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicked }) => {
   const [showHidden, setShowHidden] = useState(false);
   const [appearWait, setAppearWait] = useState(false);
+
+  const isLargeScreen = useIsLargeScreen();
+  console.log("isLargeScreen", isLargeScreen);
 
   useEffect(() => {
     setShowHidden(clicked);
@@ -27,7 +31,10 @@ export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicke
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative transform-gpu"
+        className={`
+          relative transform-gpu
+          ${!isLargeScreen && showHidden && hiddenContent ? "hidden" : ""}
+          `}
       >
         {children}
       </motion.div>
@@ -37,11 +44,16 @@ export const ShowContentOnClick = ({ children, hiddenContent, clicked, setClicke
         <motion.div
           animate={{
             opacity: showHidden ? 1 : 0,
-            x: showHidden ? "35vw" : 0,
+            display: showHidden ? "block" : "none",
+            x: showHidden && isLargeScreen ? "35vw" : 0,
             pointerEvents: showHidden ? "auto" : "none", // prevent clicking when hidden
           }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute left-1/3 transform -translate-x-1/2 max-w-[60vw]"
+          className="
+          block lg:absolute
+          right-[5vw] 
+          lg:left-1/3 transform lg:-translate-x-1/2 lg:max-w-[60vw]
+          "
         >
           <SeeLessButton clicked={clicked} setClicked={setClicked} />
           {hiddenContent}

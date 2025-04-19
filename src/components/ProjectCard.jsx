@@ -18,7 +18,7 @@ function ProjectCard ({ title, description, image, link, skills, detailedDescrip
                 clicked={clicked}
                 setClicked={setClicked}
             >
-                <div className="mx-auto w-[35vw] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
+                <div className="mx-auto w-[80vw] sm:w-[90vw] lg:w-[35vw] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
                     {detailedDescription && <SeeMoreButton clicked={clicked} setClicked={setClicked} />}
                     {/* Main Image */}
                     <div className="relative">

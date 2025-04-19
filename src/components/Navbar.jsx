@@ -7,10 +7,13 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
   return (
-    <nav className="fixed top-10 left-[20%] right-[20%] w-auto z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-lg border border-white/10 shadow-lg rounded-2xl">
-      <div className="max-w-5xl mx-auto px-4">
+    <nav className="
+    fixed top-5 left-[5vw] right-[5vw] lg:top-10 lg:left-[20vw] lg:right-[20vw] lg:w-auto z-40 bg-[rgba(10, 10, 10, 0.8)] 
+    backdrop-blur-lg border border-white/10 shadow-lg rounded-2xl
+    ">
+      <div className="lg:max-w-5xl max-w-xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <a href="#main" className="font-mono text-xl font-bold text-white">
+          <a href="#main" className="font-mono text-l lg:text-xl font-bold text-white">
             {" "}
             marcos<span className="text-blue-500">.tech</span>{" "}
           </a>
