@@ -25,12 +25,12 @@ function ProjectCard ({ title, description, image, link, skills, detailedDescrip
                         <img
                         src={image}
                         alt={title}
-                        className="w-full h-56 sm:h-64 object-cover transition-all duration-300 ease-in-out hover:brightness-75"
+                        className="w-full object-cover transition-all duration-300 ease-in-out hover:brightness-75"
                         />
                     </div>
                 
                     {/* Card Content */}
-                    <div className="p-6 h-60 bg-gradient-to-r from-purple-200 to-indigo-100 flex flex-col">
+                    <div className="p-6 lg:h-60 bg-gradient-to-r from-purple-200 to-indigo-100 flex flex-col">
                         <h3 className="text-black text-2xl font-semibold">{title}</h3>
                         <p className="text-gray-600 mt-2 mb-4">{description}</p>
                         <div className="flex-grow" />

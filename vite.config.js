@@ -10,6 +10,5 @@ export default defineConfig({
   ],
   server: { // Add this server configuration
     host: true // This listens on all available IPs, including your 192.168.68.59
-    // or specify host: '0.0.0.0'
   }
 })
