@@ -18,7 +18,7 @@ export default function About() {
             <VNavBar />
 
             <MySelf id="Myself" />
-            <Coocking id="Coocking" />
+            <Cooking id="Cooking" />
             <Sports id="Sports" />
             <Music id="Music" />
             <Travelling id="Travelling" >
@@ -48,9 +48,9 @@ const MySelf = ({id}) => {
     );
 }
 
-const Coocking = ({id}) => {
+const Cooking = ({id}) => {
     return (
-      <Section title="Coocking" id={id}>
+      <Section title="Cooking" id={id}>
         <Gallery imgs_folder={
             [
                 "/gallery/coocking/salmon.jpg", "/gallery/coocking/pizza.jpg", "/gallery/coocking/bacalao.jpg", "/gallery/coocking/paella.jpg",
