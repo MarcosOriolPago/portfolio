@@ -5,7 +5,7 @@ const iconSize = 24;
 
 const sections = [
   { id: "Myself", icon: User },
-  { id: "Coocking", icon: Utensils },
+  { id: "Cooking", icon: Utensils },
   { id: "Sports", icon: Bike },
   { id: "Music", icon: Music },
   { id: "Travelling", icon: Plane },
