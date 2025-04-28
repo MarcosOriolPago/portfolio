@@ -23,7 +23,11 @@
     
     # Copy built assets from builder stage
     COPY --from=builder /app/dist .
-    
+
+    # Copia robots.txt y sitemap.xml desde el contexto de build a la raíz de Nginx
+    COPY robots.txt . 
+    COPY sitemap.xml .
+
     # Copy custom NGINX config
     COPY nginx.conf /etc/nginx/conf.d/default.conf
     
