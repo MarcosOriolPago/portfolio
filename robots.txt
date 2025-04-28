@@ -1,0 +1,9 @@
+# robots.txt para marcos.oriol-tech.com
+# Permite el acceso completo a todos los crawlers relevantes
+
+User-agent: *
+# El asterisco (*) aplica las reglas a todos los robots (incluido Googlebot).
+Disallow:
+# Una línea "Disallow" vacía significa que no hay restricciones; se permite rastrear todo.
+
+Sitemap: https://marcos.oriol-tech.com/sitemap.xml
