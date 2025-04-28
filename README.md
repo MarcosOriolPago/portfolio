@@ -30,9 +30,9 @@ The portfolio includes the following sections:
 
 This project was built using modern technologies:
 
-* **Frontend Framework:** `[e.g., React, Vue, Svelte, Astro, Vanilla JS...]`
+* **Frontend Framework:** `[React, Vite]`
 * **Build Tool / Bundler:** Vite
-* **Styling:** `[e.g., CSS Modules, Tailwind CSS, SCSS, Plain CSS...]`
+* **Styling:** `[Tailwind CSS, SCSS]`
 * **Deployment:** Docker (Node.js + Nginx) on Google Cloud Run
 * **Fonts:** Google Fonts (Space Grotesk, JetBrains Mono)
 * **Node.js Environment:** For dependency management and the build process.
@@ -82,7 +82,3 @@ I invite you to visit the live version of the portfolio!
 🌐 **[marcos.oriol-tech.com](https://marcos.oriol-tech.com/)**
 
 If you have any questions or want to chat, feel free to contact me through the methods indicated on the website.
-
----
-
-*This README was generated with AI assistance and adapted to the portfolio's content.*
