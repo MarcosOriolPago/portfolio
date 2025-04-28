@@ -6,7 +6,7 @@ Hello! 👋 This repository contains the complete source code for my personal po
 
 This website serves as my digital introduction as a Bioengineer and Software Engineer, where I showcase my professional journey, featured projects, and the technologies I work with.
 
-![Demo GIF Placeholder](https://placehold.co/600x300/2d3748/a0aec0?text=Add+a+GIF+or+Screenshot+here!)
+![Demo GIF Placeholder](public/img/portfolio-main.png)
 
 ---
 
