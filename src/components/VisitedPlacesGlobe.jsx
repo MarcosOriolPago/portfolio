@@ -9,20 +9,27 @@ const color = '#9a5acc';
 const homeLocation = { lat: 41.390205, lng: 2.154007, name: 'Barcelona' };
 
 const visitedPlaces = [
-  { lat: -1.2864, lng: 36.8172, name: 'Nairobi, Kenya', color: color, size: size }, // Using Nairobi for Kenya
-  { lat: 9.9281, lng: -84.0907, name: 'San José, Costa Rica', color: color, size: size }, // Using San José for Costa Rica
+  { lat: -1.2864, lng: 36.8172, name: 'Nairobi, Kenya', color: color, size: size },
+  { lat: 9.9281, lng: -84.0907, name: 'San José, Costa Rica', color: color, size: size },
   { lat: 45.9237, lng: 6.8694, name: 'Chamonix, France', color: color, size: size },
   { lat: 40.8518, lng: 14.2681, name: 'Naples, Italy', color: color, size: size },
   { lat: 45.4064, lng: 11.8768, name: 'Padova, Italy', color: color, size: size },
-  { lat: 38.1157, lng: 13.3615, name: 'Palermo, Sicily', color: color, size: size }, // Using Palermo for Sicily
+  { lat: 38.1157, lng: 13.3615, name: 'Palermo, Sicily', color: color, size: size },
   { lat: 41.9028, lng: 12.4964, name: 'Rome, Italy', color: color, size: size },
   { lat: 45.4408, lng: 12.3155, name: 'Venice, Italy', color: color, size: size },
   { lat: 51.5074, lng: -0.1278, name: 'London, UK', color: color, size: size },
   { lat: 53.3498, lng: -6.2603, name: 'Dublin, Ireland', color: color, size: size },
   { lat: 41.1579, lng: -8.6291, name: 'Oporto, Portugal', color: color, size: size },
   { lat: 38.7223, lng: -9.1393, name: 'Lisbon, Portugal', color: color, size: size },
-  { lat: 37.7412, lng: -25.6756, name: 'Ponta Delgada, Azores', color: color, size: size } // Using Ponta Delgada for Azores
+  { lat: 37.7412, lng: -25.6756, name: 'Ponta Delgada, Azores', color: color, size: size },
+  { lat: 26.8565, lng: 100.2270, name: 'Lijiang, China', color: color, size: size },
+  { lat: 27.8251, lng: 99.7056, name: 'Shangri-La, China', color: color, size: size },
+  { lat: 24.7805, lng: 110.4966, name: 'Yangshuo, China', color: color, size: size },
+  { lat: 29.1171, lng: 110.4792, name: 'Zhangjiajie, China', color: color, size: size },
+  { lat: 31.2304, lng: 121.4737, name: 'Shanghai, China', color: color, size: size },
+  { lat: 52.3676, lng: 4.9041, name: 'Amsterdam, Netherlands', color: color, size: size }
 ];
+
 
 const arcsData = visitedPlaces.map(place => ({
   startLat: homeLocation.lat,
