@@ -13,7 +13,7 @@ function Main() {
         <div className="container">
         <div className="about-section">
             <div className="image-wrapper">
-            <img src="/profile.jpg" alt="Avatar" />
+            <img src="/profile.jpg" alt="Avatar" className="border-3 border-gray-800 border-solid-1 hover:scale-101" />
             </div>
             <div className="content">
             <div className="social_icons">
