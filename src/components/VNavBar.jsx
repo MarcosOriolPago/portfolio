@@ -18,63 +18,53 @@ export default function VerticalNav() {
   const [isVisible, setIsVisible] = useState(true);
   const timeoutRef = useRef(null);
 
-  // === Section highlight logic ===
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let bestCandidate = null;
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const top = entry.boundingClientRect.top;
-            if (top <= 15) {
-              if (!bestCandidate || top > bestCandidate.boundingClientRect.top) {
-                bestCandidate = entry;
-              }
-            }
-          }
-        });
-
-        if (bestCandidate) {
-          setActive(bestCandidate.target.id);
-        }
-      },
-      {
-        rootMargin: "0px 0px -85% 0px",
-        threshold: 0.05,
-      }
-    );
-
-    sections.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      sections.forEach(({ id }) => {
-        const el = document.getElementById(id);
-        if (el) observer.unobserve(el);
-      });
-    };
-  }, []);
-
-  // === Scroll listener: hide on scroll, show after 2s of no scroll ===
+  // === Combined Scroll Listener for Visibility & Active Section ===
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(false); // Hide immediately on any scroll
-
+      // 1. Handle Visibility (Hide on scroll, show after delay)
+      setIsVisible(false);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
       timeoutRef.current = setTimeout(() => {
-        setIsVisible(true); // Re-show after 2s of scroll inactivity
+        setIsVisible(true);
       }, 500);
+
+      // 2. Handle Active Section Update
+      // Find the last section that has passed the top threshold (e.g., top <= 100px)
+      let currentActiveId = active;
+
+      // We start from the active one or searching all? Searching all is safer.
+      // We want the *last* section whose top is <= viewport offset.
+      // If we use a small offset like 150px, it feels natural.
+      const threshold = 150;
+
+      let foundSection = null;
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the top of the section is above our threshold, it's a candidate.
+          // Because sections are ordered top-to-bottom, the last candidate we find
+          // is the one currently "active" (scrolled past).
+          if (rect.top <= threshold) {
+            foundSection = section.id;
+          }
+        }
+      }
+
+      if (foundSection && foundSection !== active) {
+        setActive(foundSection);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Call once on mount to set initial active state
+    handleScroll();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeoutRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, []);
+  }, [active]);
 
   return (
     <div
