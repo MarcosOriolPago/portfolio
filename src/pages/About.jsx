@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react"; // optional icon
 
 import ViewPageButton from "../components/buttons/ViewPageButton";
 import VNavBar from "../components/VNavBar";
 import Gallery from "../components/Gallery";
 import VisitedPlacesGlobe from "../components/VisitedPlacesGlobe";
-import {Footer} from "../components/Footer";
+import { Footer } from "../components/Footer";
 
 export default function About() {
     const textBack = "Return Home"
@@ -13,7 +13,7 @@ export default function About() {
         <>
             {/* Heading */}
             <div className="fixed top-10 left-10 z-40">
-                <ViewPageButton page={"#home"} text={textBack} goBack={true}/>    
+                <ViewPageButton page={"#home"} text={textBack} goBack={true} />
             </div>
             <VNavBar />
 
@@ -31,50 +31,50 @@ export default function About() {
 }
 
 
-const MySelf = ({id}) => {
+const MySelf = ({ id }) => {
     return (
         <div className="flex flex-col items-center justify-center h-screen" id={id}>
             <CarouselProfile />
             <h1 className="text-4xl font-bold mb-4">About Me</h1>
             <p className="text-lg text-center max-w-3xl">
-                I am an energyc and optimistic person with great motivation to learn and grow. I find the 
-                world fascinating, specifically the biological systems. My ambition lead me to learn software 
-                engineering due to its versatility and countless applications. 
+                I am an energyc and optimistic person with great motivation to learn and grow. I find the
+                world fascinating, specifically the biological systems. My ambition lead me to learn software
+                engineering due to its versatility and countless applications.
                 <br /><br />
-                Aside being an eager learner, I like spending time with friends, 
+                Aside being an eager learner, I like spending time with friends,
                 doing sport, and enjoying nature. These activities help me to stay on track.
             </p>
         </div>
     );
 }
 
-const Cooking = ({id}) => {
+const Cooking = ({ id }) => {
     return (
-      <Section title="Cooking" id={id}>
-        <Gallery imgs_folder={
-            [
-                "/gallery/coocking/salmon.jpg", "/gallery/coocking/pizza.jpg", "/gallery/coocking/bacalao.jpg", "/gallery/coocking/paella.jpg",
-                "/gallery/coocking/bread1.jpg", "/gallery/coocking/bread2.jpg", "/gallery/coocking/bread3.jpg", "/gallery/coocking/bread4.jpg",
-            ]} />
-      </Section>
+        <Section title="Cooking" id={id}>
+            <Gallery imgs_folder={
+                [
+                    "/gallery/coocking/salmon.jpg", "/gallery/coocking/pizza.jpg", "/gallery/coocking/bacalao.jpg", "/gallery/coocking/paella.jpg",
+                    "/gallery/coocking/bread1.jpg", "/gallery/coocking/bread2.jpg", "/gallery/coocking/bread3.jpg", "/gallery/coocking/bread4.jpg",
+                ]} />
+        </Section>
     );
-  };
+};
 
-const Sports = ({id}) => {
+const Sports = ({ id }) => {
     return (
         <Section title="Sports" id={id}>
             <Gallery imgs_folder={
                 [
                     "/gallery/sports/chamonix.jpg", "/gallery/sports/jump.png", "/gallery/sports/moto.jpg", "/gallery/sports/moto.gif",
-                    "/gallery/sports/bike.gif", "/gallery/sports/runner.jpg", "/gallery/sports/runner.gif", "/gallery/sports/padel.jpg", 
-                    "/gallery/sports/ski.jpg", 
+                    "/gallery/sports/bike.gif", "/gallery/sports/runner.jpg", "/gallery/sports/runner.gif", "/gallery/sports/padel.jpg",
+                    "/gallery/sports/ski.jpg",
                     "/gallery/sports/ski.gif",
                 ]} />
         </Section>
     )
 }
 
-const Music = ({id}) => {
+const Music = ({ id }) => {
     return (
         <Section title="Music" id={id}>
             <Gallery imgs_folder={
@@ -85,9 +85,9 @@ const Music = ({id}) => {
         </Section>
     )
 }
-  
 
-const Travelling = ({children, id}) => {
+
+const Travelling = ({ children, id }) => {
     return (
         <Section title="Travelling" id={id}>
             {children}
@@ -113,61 +113,67 @@ const CarouselProfile = () => {
         "/profileCarousel/oporto_algarve.jpg",
         "/profileCarousel/carmen_galicia.JPG",
         "/profileCarousel/enduro_chamonix.jpg",
-      ];
-  
+    ];
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [fade, setFade] = useState(true);
 
     useEffect(() => {
-    const interval = setInterval(() => {
-        setFade(false); // Start fade out
+        // Preload images
+        imagePaths.forEach((path) => {
+            const img = new Image();
+            img.src = path;
+        });
+    }, []);
 
-        setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
-        setFade(true); // Fade in new image
-        }, 500); // duration of fade out
-    }, 4000);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFade(false); // Start fade out
 
-    return () => clearInterval(interval);
+            setTimeout(() => {
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
+                setFade(true); // Fade in new image
+            }, 500); // duration of fade out
+        }, 4000);
+
+        return () => clearInterval(interval);
     }, []);
 
     return (
-    <div className="flex items-center justify-center mb-4 relative w-80 h-80">
-        <img
-        src={imagePaths[currentIndex]}
-        alt="Profile"
-        className={`absolute w-full h-full object-cover rounded-2xl shadow-lg border-2 border-blue-500 transition-opacity duration-700 ${
-            fade ? "opacity-100" : "opacity-0"
-        }`}
-        />
-    </div>
+        <div className="flex items-center justify-center mb-4 relative w-80 h-80">
+            <img
+                src={imagePaths[currentIndex]}
+                alt="Profile"
+                className={`absolute w-full h-full object-cover rounded-2xl shadow-lg border-2 border-blue-500 transition-opacity duration-700 ${fade ? "opacity-100" : "opacity-0"
+                    }`}
+            />
+        </div>
     );
 };
 
 
-const Section = ({ title, children, id}) => {
+const Section = ({ title, children, id }) => {
     const [isOpen, setIsOpen] = useState(false);
-  
+
     return (
-      <div className="mx-10" id={id}>
-        <div
-          className="bg-gray-800 p-4 rounded-lg shadow-md mb-4 text-center cursor-pointer select-none flex justify-between items-center"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <h2 className="text-4xl font-bold text-gray-300">{title}</h2>
-          <span className="text-gray-400">
-            {isOpen ? <ChevronUp /> : <ChevronDown />}
-          </span>
+        <div className="mx-10" id={id}>
+            <div
+                className="bg-gray-800 p-4 rounded-lg shadow-md mb-4 text-center cursor-pointer select-none flex justify-between items-center"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <h2 className="text-4xl font-bold text-gray-300">{title}</h2>
+                <span className="text-gray-400">
+                    {isOpen ? <ChevronUp /> : <ChevronDown />}
+                </span>
+            </div>
+
+            {/* Collapsible content */}
+            <div
+                className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? "opacity-100" : "max-h-0 opacity-0"
+                    }`}
+            >
+                <div className="py-4">{children}</div>
+            </div>
         </div>
-  
-        {/* Collapsible content */}
-        <div
-          className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isOpen ? "opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="py-4">{children}</div>
-        </div>
-      </div>
     );
-  };
+};
