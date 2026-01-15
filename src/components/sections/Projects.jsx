@@ -87,10 +87,10 @@ const Projects = () => {
                     }
                 />
                 <ProjectCard
-                    title="AI Agent Builder"
-                    description="Frontend development for an AI agent builder, allowing users to create and customize their own AI agents."
+                    title="SnnVerse"
+                    description="SNN builder playground for event based SNN network design."
                     image="img/agent-builder.png"
-                    link="https://github.com/AndresOriol/agent_builder_frontend"
+                    link="https://github.com/MarcosOriolPago/snnverse"
                     skills={
                         <SkillIconGroup>
                             <SiReact title="React" className="text-blue-400"/>

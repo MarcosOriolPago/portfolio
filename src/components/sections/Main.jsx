@@ -8,28 +8,28 @@ function Main() {
   return (
     <section
       id="main"
-      className="min-h-screen flex items-center justify-center"
+      className="h-screen flex items-center justify-center"
     >
-        <div className="container">
+      <div className="container h-full">
         <div className="about-section">
-            <div className="image-wrapper">
+          <div className="image-wrapper">
             <img src="/profile.jpg" alt="Avatar" className="border-3 border-gray-800 border-solid-1 hover:scale-101" />
-            </div>
-            <div className="content">
+          </div>
+          <div className="content">
             <div className="social_icons">
-                <a href="https://github.com/MarcosOriolPago" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-                <a href="https://www.linkedin.com/in/marcos-oriol-pagonabarraga-a9a590143/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+              <a href="https://github.com/MarcosOriolPago" target="_blank" rel="noreferrer"><GitHubIcon /></a>
+              <a href="https://www.linkedin.com/in/marcos-oriol-pagonabarraga-a9a590143/" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
             </div>
             <h1>Marcos Oriol Pagonabarraga</h1>
             <p>Bioengineer | Software Engineer</p>
 
             <div className="mobile_social_icons">
-                <a href="https://github.com/MarcosOriolPago" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-                <a href="https://www.linkedin.com/in/marcos-oriol-pagonabarraga-a9a590143/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+              <a href="https://github.com/MarcosOriolPago" target="_blank" rel="noreferrer"><GitHubIcon /></a>
+              <a href="https://www.linkedin.com/in/marcos-oriol-pagonabarraga-a9a590143/" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </section>
   );
 }
