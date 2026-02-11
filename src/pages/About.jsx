@@ -302,13 +302,6 @@ function TravellingSection() {
 
   return (
     <HobbySection id="travel" title="Travelling" subtitle="Adventure">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-        className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-4 lg:p-8 overflow-hidden"
-      >
         <WorldMap dots={connections} lineColor="#3b82f6" />
 
         {/* Places list */}
@@ -343,7 +336,6 @@ function TravellingSection() {
             </div>
           ))}
         </div>
-      </motion.div>
     </HobbySection>
   );
 }

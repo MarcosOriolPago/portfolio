@@ -10,7 +10,7 @@ import {
 
 const timelineEntries = [
   {
-    title: "2024",
+    title: "2024 - Present",
     content: (
       <div className="flex flex-col gap-8">
         {/* IDNEO */}

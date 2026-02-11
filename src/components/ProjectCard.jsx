@@ -24,7 +24,7 @@ function ProjectCard({
             <img
               src={image}
               alt={title}
-              className="w-full h-52 lg:h-60 object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-60 lg:h-70 object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
           </div>
@@ -83,7 +83,7 @@ function ProjectCard({
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl border border-white/10 bg-neutral-950 p-8 lg:p-10 scrollbar-hide"
+                className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-2xl border border-white/10 bg-neutral-950 p-8 lg:p-10 scrollbar-hide"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button

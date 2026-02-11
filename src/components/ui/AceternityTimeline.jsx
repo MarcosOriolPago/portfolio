@@ -23,7 +23,7 @@ export function Timeline({ data }) {
 
   return (
     <div className="w-full" ref={containerRef}>
-      <div ref={ref} className="relative max-w-4xl mx-auto pb-20">
+      <div ref={ref} className="relative max-w-6xl mx-auto">
         {data.map((item, index) => (
           <div
             key={index}
