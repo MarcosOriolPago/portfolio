@@ -5,7 +5,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
     { href: "#main", label: "Home" },
     { href: "#work", label: "Career" },
     { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "#cv", label: "CV" },
   ];
 
   return (

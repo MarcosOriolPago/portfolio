@@ -60,13 +60,13 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-1">
-            {["work", "projects", "contact"].map((item) => (
+            {["work", "projects", "cv"].map((item) => (
               <a
                 key={item}
                 href={`#${item}`}
                 className="relative px-4 py-2 text-sm text-neutral-400 hover:text-neutral-100 transition-colors duration-200 rounded-lg hover:bg-white/[0.04]"
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {item === "cv" ? "CV" : item.charAt(0).toUpperCase() + item.slice(1)}
               </a>
             ))}
           </div>

@@ -3,7 +3,7 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { Navbar } from "../components/Navbar";
 import { MobileMenu } from "../components/MobileMenu";
 import Main from "../components/sections/Main";
-import { Contact } from "../components/sections/Contact";
+import { CvSection } from "../components/sections/CvSection";
 import Timeline from "../components/sections/Timeline";
 import Projects from "../components/sections/Projects";
 import { Footer } from "../components/Footer";
@@ -33,7 +33,7 @@ function Home() {
         <Main />
         <Timeline />
         <Projects />
-        <Contact />
+        <CvSection />
         <Footer />
       </div>
     </>
