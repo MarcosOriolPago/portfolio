@@ -1,17 +1,31 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function ViewPageButton( {page, text, goBack} ) {
-  const arrow = <ChevronRight className={`animate-pulse ${goBack ? "rotate-180" : ""}`} />
+export default function ViewPageButton({ page, text, goBack }) {
+  const arrow = (
+    <ChevronRight
+      size={16}
+      className={`transition-transform duration-200 group-hover:translate-x-0.5 ${
+        goBack ? "rotate-180 group-hover:-translate-x-0.5" : ""
+      }`}
+    />
+  );
 
   return (
     <Link to={`/${page}`}>
-        <button className="relative overflow-hidden px-5 py-2 rounded-2xl text-white font-semibold shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group">
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-600 to-cyan-500 opacity-70 group-hover:opacity-100 animate-gradient-x" />
-            <div className="relative z-10 flex items-center gap-2">
-                {goBack ? <>{arrow} {text}</> : <>{text} {arrow}</>} 
-            </div>
-        </button>
-    </Link>    
+      <button className="group relative overflow-hidden px-4 py-2 rounded-xl text-sm text-neutral-300 font-medium cursor-pointer border border-white/10 bg-white/[0.03] hover:border-white/20 hover:text-white hover:bg-white/[0.06] transition-all duration-300">
+        <div className="relative z-10 flex items-center gap-1.5">
+          {goBack ? (
+            <>
+              {arrow} {text}
+            </>
+          ) : (
+            <>
+              {text} {arrow}
+            </>
+          )}
+        </div>
+      </button>
+    </Link>
   );
 }

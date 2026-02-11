@@ -1,29 +1,18 @@
-import React from 'react';
+import React from "react";
 
 const SkillIconGroup = ({ children }) => {
-    return (
-      <div
-        className="flex flex-wrap sm:flex-nowrap -space-x-3 sm:-space-x-2 pointer-events-none"
-      >
-        {React.Children.map(children, (child, index) => (
-          <div
-            key={index}
-            className="rounded-full bg-white shadow-md p-2 sm:p-3 border border-gray-200 bg-gradient-to-r from-purple-200 to-indigo-100
-                       pointer-events-auto 
-                       transition-transform 
-                       hover:scale-105 
-                       motion-reduce:transition-none 
-                       hover:brightness-105 
-                       hover:shadow-lg 
-                       hover:z-10 
-                       group-hover:z-10
-                       supports-[hover]:hover:scale-105"
-          >
-            {child}
-          </div>
-        ))}
-      </div>
-    );
-  };
+  return (
+    <div className="flex flex-wrap -space-x-2">
+      {React.Children.map(children, (child, index) => (
+        <div
+          key={index}
+          className="rounded-full bg-neutral-900 p-2 border border-white/[0.08] transition-transform duration-200 hover:scale-110 hover:z-10 hover:bg-neutral-800"
+        >
+          {child}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default SkillIconGroup;

@@ -1,7 +1,8 @@
-
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
+import { Send } from "lucide-react";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,9 +10,11 @@ export const Contact = () => {
     email: "",
     message: "",
   });
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSending(true);
 
     emailjs
       .sendForm(
@@ -20,33 +23,43 @@ export const Contact = () => {
         e.target,
         "rSiFjFAxGIIsHtbAv"
       )
-      .then((result) => {
+      .then(() => {
         alert("Message Sent!");
         setFormData({ name: "", email: "", message: "" });
+        setSending(false);
       })
-      .catch(() => alert("Oops! Something went wrong. Please try again."));
+      .catch(() => {
+        alert("Oops! Something went wrong. Please try again.");
+        setSending(false);
+      });
   };
 
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center"
+      className="py-24 px-6 flex items-center justify-center"
     >
       <RevealOnScroll>
-        <div className="px-4 w-full min-w-[300px] md:w-[500px] sm:w-2/3 p-6">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            {" "}
+        <div className="w-full max-w-lg">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-px w-8 bg-blue-500" />
+            <span className="text-sm font-mono text-blue-400 tracking-wider uppercase">
+              Contact
+            </span>
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-100 mb-8">
             Get In Touch
           </h2>
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="relative">
+
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <div>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
                 value={formData.name}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-neutral-200 text-sm transition-all duration-300 focus:outline-none focus:border-blue-500/50 focus:bg-blue-500/[0.03] focus:ring-1 focus:ring-blue-500/20 placeholder:text-neutral-600"
                 placeholder="Name..."
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -54,14 +67,14 @@ export const Contact = () => {
               />
             </div>
 
-            <div className="relative">
+            <div>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 value={formData.email}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-neutral-200 text-sm transition-all duration-300 focus:outline-none focus:border-blue-500/50 focus:bg-blue-500/[0.03] focus:ring-1 focus:ring-blue-500/20 placeholder:text-neutral-600"
                 placeholder="example@gmail.com"
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -69,14 +82,14 @@ export const Contact = () => {
               />
             </div>
 
-            <div className="relative">
+            <div>
               <textarea
                 id="message"
                 name="message"
                 required
                 rows={5}
                 value={formData.message}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-3 text-neutral-200 text-sm transition-all duration-300 focus:outline-none focus:border-blue-500/50 focus:bg-blue-500/[0.03] focus:ring-1 focus:ring-blue-500/20 placeholder:text-neutral-600 resize-none"
                 placeholder="Your Message..."
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
@@ -84,12 +97,16 @@ export const Contact = () => {
               />
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+              disabled={sending}
+              className="flex items-center justify-center gap-2 w-full bg-blue-500 hover:bg-blue-400 text-white py-3 px-6 rounded-xl font-medium text-sm transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              Send Message
-            </button>
+              <Send size={16} />
+              {sending ? "Sending..." : "Send Message"}
+            </motion.button>
           </form>
         </div>
       </RevealOnScroll>
