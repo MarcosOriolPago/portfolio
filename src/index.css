@@ -122,6 +122,17 @@ body::-webkit-scrollbar {
 }
 
 /* Scrollbar styling for inner content */
+/* Marquee animations */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+  width: max-content;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

@@ -6,7 +6,7 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import {
   SiJavascript, SiReact, SiTailwindcss, SiGooglecloud,
   SiPython, SiC, SiArduino, SiNumpy, SiGit, SiPytorch, SiVite,
-  SiDocker, SiLatex,
+  SiDocker, SiLatex, SiScikitlearn, SiCplusplus,
 } from "react-icons/si";
 
 const Projects = () => {
@@ -141,6 +141,83 @@ const Projects = () => {
                     />
                   </div>
                 </div>
+              </InnerProjectDescription>
+            }
+          />
+
+          {/* NeuroGait */}
+          <ProjectCard
+            title="NeuroGait C++"
+            description="Microcontroller optimized closed-loop AI control system for gait rehabilitation using FES, proving that EMG from stimulation electrodes alone can replace external sensors."
+            image="img/neurogait-results.png"
+            link="https://github.com/MNR-MarcosOriolPagonabarraga-projects/NeuroGait"
+            skills={
+              <SkillIconGroup>
+                <SiPython title="Python" className="text-yellow-400" />
+                <SiScikitlearn title="Scikit-learn" className="text-orange-400" />
+                <SiNumpy title="Numpy" className="text-blue-900" />
+                <SiCplusplus title="C++" className="text-blue-400" />
+              </SkillIconGroup>
+            }
+            detailedDescription={
+              <InnerProjectDescription>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
+                  <strong className="text-blue-400">Goal</strong>
+                  <br />
+                  The objective was to prove that no external sensors such as IMUs
+                  or torque sensors are needed for FES devices in Foot Drop
+                  condition. By reusing the built-in stimulation electrodes to
+                  record EMG signals, the hardware of rehabilitation devices can
+                  be greatly simplified.
+                </p>
+                <img
+                  src="img/neurogait-pipeline.png"
+                  alt="NeuroGait system pipeline"
+                  className="rounded-xl border border-white/10 mb-3"
+                />
+                <p className="text-sm text-neutral-500 mb-5">
+                  <strong>Figure 1:</strong> System pipeline -- EMG signals from
+                  TA and MG muscles are processed through a feature extractor,
+                  then classified by a context gate (walking mode + gait phase)
+                  and motion intention module to drive the stimulator.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
+                  <strong className="text-blue-400">Implementation</strong>
+                  <br />
+                  Two lightweight ML classifiers were trained over extracted EMG
+                  features from the Tibialis Anterior and Medial Gastrocnemius
+                  muscles: a walking mode classifier and a gait phase classifier.
+                  The feature extraction pipeline enabled simple, resource-efficient
+                  models suitable for microcontroller deployment.
+                </p>
+                <img
+                  src="img/neurogait-results.png"
+                  alt="NeuroGait classification results"
+                  className="rounded-xl border border-white/10 mb-3"
+                />
+                <p className="text-sm text-neutral-500 mb-5">
+                  <strong>Figure 2:</strong> PCA feature visualization and
+                  confusion matrices for both classifiers -- 97% accuracy for
+                  walking mode, 83% for gait phase detection.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
+                  <strong className="text-blue-400">Optimization</strong>
+                  <br />
+                  The trained models and control logic were converted into
+                  memory-optimized C++ code, designed to fit within the
+                  constraints of a microcontroller for real-time, on-device
+                  inference in a production FES environment. The optimized 
+                  system ran with <strong>4KB</strong> of RAM and <strong>14KB</strong> of flash memory.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed">
+                  <strong className="text-blue-400">Conclusion</strong>
+                  <br />
+                  Results demonstrate that reusing EMG signals from FES
+                  stimulation electrodes provides sufficient information for
+                  walking mode and gait phase classification, potentially
+                  eliminating the need for additional external sensors in foot
+                  drop rehabilitation devices.
+                </p>
               </InnerProjectDescription>
             }
           />

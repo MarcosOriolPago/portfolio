@@ -24,7 +24,7 @@ function Main() {
           >
             <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-3xl animate-pulse-glow" />
             <img
-              src="/profile.jpg"
+              src="/profile-light.png"
               alt="Marcos Oriol Pagonabarraga"
               className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-xl object-cover border-2 border-white/10 shadow-2xl"
             />
@@ -38,10 +38,6 @@ function Main() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex items-center gap-3 mb-4"
             >
-              <div className="h-px w-8 bg-blue-500" />
-              <span className="text-base font-mono text-blue-400 tracking-wider uppercase">
-                Portfolio
-              </span>
             </motion.div>
 
             <motion.h1

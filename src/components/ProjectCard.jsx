@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlowingCard } from "./ui/GlowingCard";
@@ -14,6 +14,17 @@ function ProjectCard({
   detailedDescription,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -34,7 +45,7 @@ function ProjectCard({
             <h3 className="text-2xl font-semibold text-neutral-100 mb-3">
               {title}
             </h3>
-            <p className="text-base text-neutral-300 leading-relaxed mb-6">
+            <p className="text-lg text-neutral-300 leading-relaxed mb-6">
               {description}
             </p>
 
