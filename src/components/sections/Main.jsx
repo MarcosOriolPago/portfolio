@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Download } from "lucide-react";
 import { WavyBackground } from "../ui/WavyBackground";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 
@@ -80,6 +81,14 @@ function Main() {
               >
                 <FaLinkedin size={20} />
                 <span>LinkedIn</span>
+              </a>
+              <a
+                href="cv.pdf"
+                download="Marcos_Oriol_CV.pdf"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-300 hover:text-white hover:border-blue-400/40 hover:bg-blue-500/20 transition-all duration-300 text-base"
+              >
+                <Download size={18} />
+                <span>CV</span>
               </a>
             </motion.div>
           </div>

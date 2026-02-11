@@ -3,9 +3,9 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { Navbar } from "../components/Navbar";
 import { MobileMenu } from "../components/MobileMenu";
 import Main from "../components/sections/Main";
-import { CvSection } from "../components/sections/CvSection";
 import Timeline from "../components/sections/Timeline";
 import Projects from "../components/sections/Projects";
+import Education from "../components/sections/Education";
 import { Footer } from "../components/Footer";
 
 function Home() {
@@ -33,7 +33,7 @@ function Home() {
         <Main />
         <Timeline />
         <Projects />
-        <CvSection />
+        <Education />
         <Footer />
       </div>
     </>
