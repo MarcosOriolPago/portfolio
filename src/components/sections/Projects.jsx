@@ -16,13 +16,16 @@ const Projects = () => {
         <RevealOnScroll>
           <div className="flex items-center gap-3 mb-2">
             <div className="h-px w-8 bg-blue-500" />
-            <span className="text-sm font-mono text-blue-400 tracking-wider uppercase">
+            <span className="text-base font-mono text-blue-400 tracking-wider uppercase">
               Work
             </span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-100 mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-100 mb-6">
             Projects
           </h2>
+          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mb-16">
+            A selection of projects I have built, ranging from research tools to web applications.
+          </p>
         </RevealOnScroll>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -42,7 +45,7 @@ const Projects = () => {
             }
             detailedDescription={
               <InnerProjectDescription>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
                   <strong className="text-blue-400">Purpose</strong>
                   <br />
                   SNNverse is an open-source visual playground for quickly prototyping
@@ -50,10 +53,10 @@ const Projects = () => {
                   GPU-accelerated backend simulation through GeNN, making SNN research
                   accessible and intuitive.
                 </p>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="text-base text-neutral-300 leading-relaxed mb-3">
                   <strong className="text-blue-400">Key Features</strong>
                 </p>
-                <ul className="text-sm text-neutral-400 leading-relaxed mb-4 list-disc list-inside flex flex-col gap-1">
+                <ul className="text-base text-neutral-300 leading-relaxed mb-5 list-disc list-inside flex flex-col gap-1.5">
                   <li>Drag-and-drop flow-based network construction</li>
                   <li>Real-time simulation feedback with live membrane voltage and spike raster streams</li>
                   <li>GPU-accelerated computation with automatic C++ code generation</li>
@@ -63,13 +66,13 @@ const Projects = () => {
                 <img
                   src="img/snnverse.png"
                   alt="SNNverse builder interface"
-                  className="rounded-xl border border-white/10 mb-2"
+                  className="rounded-xl border border-white/10 mb-3"
                 />
-                <p className="text-xs text-neutral-500 mb-4">
+                <p className="text-sm text-neutral-500 mb-5">
                   <strong>Figure:</strong> The visual network builder showing a multi-layer
                   spiking neural network with PyInput nodes and interconnected neuron populations.
                 </p>
-                <p className="text-sm text-neutral-400 leading-relaxed">
+                <p className="text-base text-neutral-300 leading-relaxed">
                   <strong className="text-blue-400">Tech Stack</strong>
                   <br />
                   React + React Flow for the frontend, Python + GeNN for the GPU-accelerated backend,
@@ -95,7 +98,7 @@ const Projects = () => {
             }
             detailedDescription={
               <InnerProjectDescription>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
                   <strong className="text-blue-400">Context</strong>
                   <br />
                   Spiking Neural Networks (SNNs) work similar to other classical
@@ -103,8 +106,8 @@ const Projects = () => {
                   mimicking the membrane potential of biological neurons, each
                   node will get charged when receiving an input, and discharged
                   through each time step.
-                  <br />
-                  <br />
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
                   <strong className="text-blue-400">Goal</strong>
                   <br />
                   This project consisted in applying a SNN for detecting Sharp
@@ -114,17 +117,17 @@ const Projects = () => {
                 <img
                   src="img/overview_workflow.png"
                   alt="SNN workflow overview"
-                  className="rounded-xl border border-white/10 mb-2"
+                  className="rounded-xl border border-white/10 mb-3"
                 />
-                <p className="text-xs text-neutral-500 mb-4">
+                <p className="text-sm text-neutral-500 mb-5">
                   <strong>Figure 1:</strong> Each timestep, a value of the signal
                   arrives to a specific neuron from the input layer of the
                   network.
                 </p>
-                <strong className="text-blue-400 text-sm">Result</strong>
-                <div className="grid grid-cols-1 gap-4 mt-2">
+                <strong className="text-blue-400 text-base">Result</strong>
+                <div className="grid grid-cols-1 gap-4 mt-3">
                   <div>
-                    <p className="text-xs text-neutral-500 mb-1 text-center">
+                    <p className="text-sm text-neutral-500 mb-1 text-center">
                       Input
                     </p>
                     <img
@@ -134,7 +137,7 @@ const Projects = () => {
                     />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-500 mb-1 text-center">
+                    <p className="text-sm text-neutral-500 mb-1 text-center">
                       Output
                     </p>
                     <img
@@ -180,17 +183,17 @@ const Projects = () => {
             }
             detailedDescription={
               <InnerProjectDescription>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
                   <strong className="text-blue-400">Overview</strong>
                   <br />
                   A clean, modern LaTeX template designed for professional CVs.
                   It produces high-quality PDF output suitable for job applications,
                   academic purposes, or professional portfolios.
                 </p>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="text-base text-neutral-300 leading-relaxed mb-3">
                   <strong className="text-blue-400">Features</strong>
                 </p>
-                <ul className="text-sm text-neutral-400 leading-relaxed mb-4 list-disc list-inside flex flex-col gap-1">
+                <ul className="text-base text-neutral-300 leading-relaxed mb-5 list-disc list-inside flex flex-col gap-1.5">
                   <li>Minimal and modern design with gradient header</li>
                   <li>Fully customizable sections (career, projects, education, skills)</li>
                   <li>Skill icon integration for technologies</li>
@@ -200,9 +203,9 @@ const Projects = () => {
                 <img
                   src="img/cv-preview.png"
                   alt="CV Template Preview"
-                  className="rounded-xl border border-white/10 mb-2"
+                  className="rounded-xl border border-white/10 mb-3"
                 />
-                <p className="text-xs text-neutral-500">
+                <p className="text-sm text-neutral-500">
                   <strong>Preview:</strong> The generated CV layout with career history,
                   projects, skills, and education sections.
                 </p>
@@ -224,22 +227,22 @@ const Projects = () => {
             }
             detailedDescription={
               <InnerProjectDescription>
-                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
                   <strong className="text-blue-400">Context</strong>
                   <br />
                   This project consisted in developing a radiocontrolled car for
                   rehabilitation purposes. The car was designed to be used by
                   patients with arm disabilities, allowing them to control the
                   car with their arm movements.
-                  <br />
-                  <br />
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
                   <strong className="text-blue-400">Goal</strong>
                   <br />
                   The goal was to develop a fully 3D printed car that could be
                   controlled by two Arduinos with a custom Bluetooth
                   communication protocol.
-                  <br />
-                  <br />
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-3">
                   <strong className="text-blue-400">Development</strong>
                 </p>
                 <Gallery
@@ -251,7 +254,7 @@ const Projects = () => {
                     "img/cars_wires.jpg",
                   ]}
                 />
-                <p className="text-sm text-neutral-400 leading-relaxed mt-4 mb-2">
+                <p className="text-base text-neutral-300 leading-relaxed mt-5 mb-3">
                   <strong className="text-blue-400">Result</strong>
                 </p>
                 <img

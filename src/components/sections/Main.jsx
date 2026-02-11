@@ -39,7 +39,7 @@ function Main() {
               className="flex items-center gap-3 mb-4"
             >
               <div className="h-px w-8 bg-blue-500" />
-              <span className="text-sm font-mono text-blue-400 tracking-wider uppercase">
+              <span className="text-base font-mono text-blue-400 tracking-wider uppercase">
                 Portfolio
               </span>
             </motion.div>
@@ -48,7 +48,7 @@ function Main() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl lg:text-6xl font-bold text-neutral-100 mb-2 text-balance"
+              className="text-5xl lg:text-7xl font-bold text-neutral-100 mb-3 text-balance"
             >
               Marcos Oriol{" "}
               <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -58,7 +58,7 @@ function Main() {
 
             <TextGenerateEffect
               words="Bioengineer | Software Engineer"
-              className="text-lg lg:text-xl text-neutral-400 mb-8 font-mono"
+              className="text-xl lg:text-2xl text-neutral-400 mb-8 font-mono"
             />
 
             <motion.div
@@ -71,19 +71,19 @@ function Main() {
                 href="https://github.com/MarcosOriolPago"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-neutral-300 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-neutral-300 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 text-base"
               >
-                <FaGithub size={18} />
-                <span className="text-sm">GitHub</span>
+                <FaGithub size={20} />
+                <span>GitHub</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/marcos-oriol-pagonabarraga-a9a590143/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-neutral-300 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-neutral-300 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 text-base"
               >
-                <FaLinkedin size={18} />
-                <span className="text-sm">LinkedIn</span>
+                <FaLinkedin size={20} />
+                <span>LinkedIn</span>
               </a>
             </motion.div>
           </div>
@@ -99,9 +99,9 @@ function Main() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-8 rounded-full border-2 border-white/20 flex items-start justify-center p-1"
+            className="w-6 h-9 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5"
           >
-            <motion.div className="w-1 h-2 rounded-full bg-blue-400" />
+            <motion.div className="w-1.5 h-2.5 rounded-full bg-blue-400" />
           </motion.div>
         </motion.div>
       </WavyBackground>
