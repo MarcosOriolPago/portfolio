@@ -1,72 +1,104 @@
-import React from 'react';
-import { useState } from 'react';
-import {ShowContentOnClick} from './ShowContentOnClick';
-import SeeMoreButton from './buttons/SeeMoreButton';
-import { RevealOnScroll } from './RevealOnScroll';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { GlowingCard } from "./ui/GlowingCard";
+import { RevealOnScroll } from "./RevealOnScroll";
+import { ChevronRight, X, ExternalLink } from "lucide-react";
 
-import '../assets/styles/Projects.scss';
+function ProjectCard({
+  title,
+  description,
+  image,
+  link,
+  skills,
+  detailedDescription,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
 
+  return (
+    <RevealOnScroll>
+      <GlowingCard className="overflow-hidden">
+        {/* Image */}
+        <div className="relative overflow-hidden">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-48 lg:h-56 object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
+        </div>
 
-function ProjectCard ({ title, description, image, link, skills, detailedDescription }) {
-    
-    const [clicked, setClicked] = useState(false);
-    
-    return (
-        <RevealOnScroll>
-            <ShowContentOnClick
-                hiddenContent= {detailedDescription}
-                clicked={clicked}
-                setClicked={setClicked}
+        {/* Content */}
+        <div className="p-6">
+          <h3 className="text-xl font-semibold text-neutral-100 mb-2">
+            {title}
+          </h3>
+          <p className="text-sm text-neutral-400 leading-relaxed mb-5">
+            {description}
+          </p>
+
+          <div className="flex items-center justify-between">
+            {skills}
+            <div className="flex items-center gap-3">
+              {detailedDescription && (
+                <button
+                  onClick={() => setIsOpen(true)}
+                  className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                >
+                  <span>Details</span>
+                  <ChevronRight size={14} />
+                </button>
+              )}
+              {link && (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-300 transition-colors"
+                >
+                  <span>Repo</span>
+                  <ExternalLink size={12} />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </GlowingCard>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto rounded-2xl border border-white/10 bg-neutral-950 p-6 lg:p-8 scrollbar-hide"
+              onClick={(e) => e.stopPropagation()}
             >
-                <div className="mx-auto w-[80vw] sm:w-[90vw] lg:w-[35vw] border border-gray-400 shadow-lg rounded-lg overflow-hidden items-center">
-                    {detailedDescription && <SeeMoreButton clicked={clicked} setClicked={setClicked} />}
-                    {/* Main Image */}
-                    <div className="relative">
-                        <img
-                        src={image}
-                        alt={title}
-                        className="w-full object-cover transition-all duration-300 ease-in-out hover:brightness-75"
-                        />
-                    </div>
-                
-                    {/* Card Content */}
-                    <div className="p-6 lg:h-60 bg-gradient-to-r from-purple-200 to-indigo-100 flex flex-col">
-                        <h3 className="text-black text-2xl font-semibold">{title}</h3>
-                        <p className="text-gray-600 mt-2 mb-4">{description}</p>
-                        <div className="flex-grow" />
-                        <div className="flex justify-between">
-                            {skills}
-                            {link && <CheckRepo link={link} />}
-                        </div>
-                    </div>
-                </div>
-            </ShowContentOnClick>
-        </RevealOnScroll>
-    )
-};
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+              >
+                <X size={16} />
+              </button>
 
-
-const CheckRepo = ({link}) => {
-    return (
-        <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-purple-400 hover:text-purple-300 transition-colors duration-300"
-        >
-        Check Repository
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 rotate-180"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path d="M2 12l19-9-4 9 4 9-19-9z" />
-        </svg>
-        </a>
-    )
+              <h3 className="text-2xl font-bold text-neutral-100 mb-6">
+                {title}
+              </h3>
+              {detailedDescription}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </RevealOnScroll>
+  );
 }
-
-
 
 export default ProjectCard;

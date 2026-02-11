@@ -22,13 +22,12 @@ function Home() {
 
   return (
     <>
-      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}{" "}
+      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
       <div
-        className={`min-h-screen transition-opacity duration-700 ${
+        className={`min-h-screen transition-opacity duration-700 noise-overlay ${
           isLoaded ? "opacity-100" : "opacity-0"
-        } bg-black text-gray-100`}
+        } bg-background text-foreground`}
       >
-        {/* <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> */}
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Main />

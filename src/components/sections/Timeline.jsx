@@ -1,155 +1,174 @@
-import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import { motion } from "framer-motion";
+import { TracingBeam } from "../ui/TracingBeam";
 import SkillIconGroup from "../SkillIconGroup";
-import 'react-vertical-timeline-component/style.min.css';
-import '../../assets/styles/Timeline.scss'
+import { RevealOnScroll } from "../RevealOnScroll";
 
-import { 
-  SiJavascript, SiHtml5, SiPhp, SiMysql, SiTensorflow, 
+import {
+  SiJavascript, SiHtml5, SiPhp, SiMysql, SiTensorflow,
   SiPython, SiC, SiPandas, SiNumpy, SiGit, SiPytorch, SiLinux
-} from 'react-icons/si';
+} from "react-icons/si";
+
+const timelineData = [
+  {
+    date: "2024 - present",
+    title: "AI - ML Engineer",
+    organization: "IDNEO Technologies Inc.",
+    organizationUrl: "https://www.idneo.com/",
+    location: "Barcelona, Spain",
+    description:
+      "Development of AI Models for embedded systems in the automotive industry, including data collection, model training, and deployment.",
+    skills: [
+      { icon: SiPython, label: "Python", color: "#3776AB" },
+      { icon: SiTensorflow, label: "TensorFlow", color: "#FF6F00" },
+      { icon: SiC, label: "C", color: "#A8B9CC" },
+      { icon: SiPandas, label: "Pandas", color: "#150458" },
+      { icon: SiNumpy, label: "NumPy", color: "#013243" },
+      { icon: SiGit, label: "Git", color: "#F05032" },
+    ],
+  },
+  {
+    date: "2024 - 2025",
+    title: "Software Engineer",
+    organization: "PRBB",
+    organizationUrl: "https://www.prbb.org/",
+    location: "Barcelona, Spain",
+    description:
+      "Developing and implementing artificial intelligence tools for software designed for ultrasonic-based spinal cord stimulation.",
+    skills: [
+      { icon: SiPython, label: "Python", color: "#3776AB" },
+      { icon: SiTensorflow, label: "Tensorflow", color: "#2dd4bf" },
+      { icon: SiNumpy, label: "NumPy", color: "#013243" },
+      { icon: SiGit, label: "Git", color: "#F05032" },
+    ],
+  },
+  {
+    date: "2024 Feb - Jul",
+    title: "Computational Neuroscience Researcher",
+    organization: "i3S - Instituto de Investigacao e Inovacao em Saude",
+    organizationUrl: "https://www.i3s.up.pt/",
+    location: "Porto, Portugal",
+    description:
+      "Neuromorphic computation on low-power microcontroller for closed-loop signal detection applications.",
+    skills: [
+      { icon: SiPython, label: "Python", color: "#3776AB" },
+      { icon: SiPytorch, label: "Pytorch", color: "#f87171" },
+      { icon: SiNumpy, label: "NumPy", color: "#013243" },
+      { icon: SiLinux, label: "WSL", color: "#ffffff" },
+    ],
+  },
+  {
+    date: "2023 - 2024",
+    title: "Software Developer",
+    organization: "Skynet Legal",
+    organizationUrl: "https://www.skynetlegal.com/",
+    location: "Barcelona, Spain",
+    description:
+      "Automation, Web development, and Data Analysis for a legal tech startup.",
+    skills: [
+      { icon: SiPython, label: "Python", color: "#3776AB" },
+      { icon: SiJavascript, label: "JavaScript", color: "#fb923c" },
+      { icon: SiHtml5, label: "HTML5", color: "#E34F26" },
+      { icon: SiPhp, label: "PHP", color: "#4F5B93" },
+      { icon: SiMysql, label: "SQL", color: "#E34F26" },
+    ],
+  },
+];
 
 function Timeline() {
   return (
-    <div id="work">
-      <div className="items-center justify-center">
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            {" "}
-            Carrer History
-        </h2>
-        <VerticalTimeline>
-          <TimelineEvent
-            date="2024 - present"
-            title="AI - ML Engineer"
-            subtitle="Barcelona, Spain"
-            organization="IDNEO Technologies Inc."
-            organizationUrl="https://www.idneo.com/"
-            description="Development of AI Models for embedded systems in the automotive industry, including data collection, model training, and deployment."
-            skills={
-              <SkillIconGroup>
-                <SiPython title="Python" className="text-[#3776AB]" />        
-                <SiTensorflow title="TensorFlow" className="text-[#FF6F00]" />
-                <SiC title="C" className="text-[#A8B9CC]" />
-                <SiPandas title="Pandas" className="text-[#150458]" />        
-                <SiNumpy title="NumPy" className="text-[#013243]" />
-                <SiGit title="Git" className="text-[#F05032]" /> 
-              </SkillIconGroup>
-            }
-          />
-          <TimelineEvent
-            date="2024 - 2025"
-            title="Software Engineer"
-            subtitle="Barcelona, Spain"
-            organization="PRBB"
-            organizationUrl="https://www.prbb.org/"
-            description="Developing and implementing artificial intelligence tools for software designed for ultrasonic-based spinal cord stimulation."
-            skills={
-              <SkillIconGroup>
-                <SiPython title="Python" className="text-[#3776AB]" />
-                <SiTensorflow title="Tensorflow" className="text-teal-400" />
-                <SiNumpy title="NumPy" className="text-[#013243]" />
-                <SiGit title="Git" className="text-[#F05032]" /> 
-              </SkillIconGroup>
-            }
-          />
-          <TimelineEvent
-            date="2024 Feb - Jul"
-            title="Computational Neuroscience Researcher"
-            subtitle="Porto, Portugal"
-            organization="i3S - Instituto de Investigação e Inovação em Saúde"
-            organizationUrl="https://www.i3s.up.pt/"
-            description="Neuromorphic computation on low-power microcontroller for closed-loop signal detection applications."
-            skills={
-              <SkillIconGroup>
-                <SiPython title="Python" className="text-[#3776AB]" />
-                <SiPytorch title="Pytorch" className="text-red-400" />
-                <SiNumpy title="NumPy" className="text-[#013243]" />
-                <SiLinux title="WSL" />
-              </SkillIconGroup>
-            }
-          />
-          <TimelineEvent
-            date="2023 - 2024"
-            title="Software Developer"
-            subtitle="Barcelona, Spain"
-            organization="Skynet Legal"
-            organizationUrl="https://www.skynetlegal.com/"
-            description="Automation, Web development, and Data Analysis for a legal tech startup."
-            skills={
-              <SkillIconGroup>
-                <SiPython title="Python" className="text-[#3776AB]" />
-                <SiJavascript title="JavaScript" className="text-orange-400" />
-                <SiHtml5 title="HTML5" className="text-[#E34F26]" />
-                <SiPhp title="PHP" className="text-[#4F5B93]" />
-                <SiMysql title="SQL" className="text-[#E34F26]" />
-              </SkillIconGroup>
-            }
-          />
-        </VerticalTimeline>
+    <section id="work" className="py-24 px-6">
+      <div className="max-w-4xl mx-auto">
+        <RevealOnScroll>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="h-px w-8 bg-blue-500" />
+            <span className="text-sm font-mono text-blue-400 tracking-wider uppercase">
+              Experience
+            </span>
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-100 mb-16">
+            Career History
+          </h2>
+        </RevealOnScroll>
+
+        <TracingBeam className="pl-6 md:pl-20">
+          <div className="flex flex-col gap-12">
+            {timelineData.map((item, idx) => (
+              <TimelineCard key={idx} {...item} index={idx} />
+            ))}
+          </div>
+        </TracingBeam>
       </div>
-    </div>
+    </section>
   );
 }
 
-
-const TimelineEvent = ({
+function TimelineCard({
   date,
   title,
-  subtitle,
-  description,
   organization,
   organizationUrl,
+  location,
+  description,
   skills,
-}) => {
+  index,
+}) {
   return (
-    <VerticalTimelineElement
-      className="vertical-timeline-element--work"
-      contentStyle={{
-        background: 'linear-gradient(135deg, #e0c3fc, #8ec5fc)', // Gradient
-        color: 'rgb(39, 40, 34)',
-        borderRadius: '10px',
-        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-      }}
-      contentArrowStyle={{ borderRight: '7px solid white' }}
-      date={date}
-      iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-      icon={<FontAwesomeIcon icon={faBriefcase} />}
-    >
-      {/* Title with better styling */}
-      <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1">
-        {title}
-      </h3>
+    <RevealOnScroll>
+      <motion.div
+        whileHover={{ y: -2 }}
+        transition={{ duration: 0.2 }}
+        className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 lg:p-8 backdrop-blur-sm hover:border-white/10 transition-colors duration-300"
+      >
+        {/* Date badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4">
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+          <span className="text-xs font-mono text-blue-400">{date}</span>
+        </div>
 
-      {/* Organization (with optional link) */}
-      {organization && (
-        <h4 className="text-sm sm:text-base text-gray-600 mb-1 font-medium">
-          {organizationUrl ? (
-            <a
-              href={organizationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline hover:text-indigo-600 transition-colors"
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-neutral-100 mb-1">{title}</h3>
+
+        {/* Organization */}
+        {organization && (
+          <p className="text-sm text-neutral-400 mb-1">
+            {organizationUrl ? (
+              <a
+                href={organizationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors duration-200 underline underline-offset-2 decoration-neutral-700 hover:decoration-blue-400"
+              >
+                {organization}
+              </a>
+            ) : (
+              organization
+            )}
+          </p>
+        )}
+
+        {/* Location */}
+        <p className="text-xs text-neutral-500 mb-4">{location}</p>
+
+        {/* Description */}
+        <p className="text-sm text-neutral-400 leading-relaxed mb-5">
+          {description}
+        </p>
+
+        {/* Skills */}
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-xs text-neutral-400"
             >
-              {organization}
-            </a>
-          ) : (
-            organization
-          )}
-        </h4>
-      )}
-
-      {/* Location / subtitle */}
-      <h5 className="text-sm text-gray-500 italic mb-2">{subtitle}</h5>
-
-      {/* Description */}
-      <p className="text-sm text-gray-700 leading-relaxed">{description}</p>
-
-      {/* Skills */}
-      {skills && <div className="mt-3">{skills}</div>}
-    </VerticalTimelineElement>
+              <skill.icon style={{ color: skill.color }} size={12} />
+              <span>{skill.label}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </RevealOnScroll>
   );
-};
+}
 
 export default Timeline;
