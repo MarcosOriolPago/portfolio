@@ -25,7 +25,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* SNNverse */}
           <ProjectCard
-            title="SNNverse"
+            title="SpikeVerse: Open-Source Visual Playground for Spiking Neural Networks"
             description="A visual, interactive playground for building, simulating, and understanding Spiking Neural Networks with GPU-accelerated computation through GeNN."
             image="img/snnverse.png"
             link="https://github.com/MarcosOriolPago/SNNverse"
@@ -78,7 +78,7 @@ const Projects = () => {
 
           {/* Spiking Neural Networks Research */}
           <ProjectCard
-            title="Spiking Neural Networks"
+            title="Final Degree Thesis: SNNs for Closed-Loop Signal Detection"
             description="Neuromorphic computation on low-power microcontrollers for closed-loop signal detection applications."
             image="img/loihi2.jpg"
             link="https://github.com/MarcosOriolPago/LAVA_SNN_ripples"

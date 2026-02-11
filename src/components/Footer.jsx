@@ -6,9 +6,6 @@ export const Footer = () => {
 
   return (
     <footer className="relative border-t border-white/[0.06] mt-12 overflow-hidden">
-      {/* Marquee as subtle background */}
-      <TechMarquee />
-
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-8">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
           <a
