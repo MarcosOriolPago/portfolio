@@ -3,6 +3,7 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { Navbar } from "../components/Navbar";
 import { MobileMenu } from "../components/MobileMenu";
 import Main from "../components/sections/Main";
+import TechMarquee from "../components/sections/TechMarquee";
 import { CvSection } from "../components/sections/CvSection";
 import Timeline from "../components/sections/Timeline";
 import Projects from "../components/sections/Projects";
@@ -31,6 +32,7 @@ function Home() {
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Main />
+        <TechMarquee />
         <Timeline />
         <Projects />
         <CvSection />
