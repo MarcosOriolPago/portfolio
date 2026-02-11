@@ -147,9 +147,9 @@ const Projects = () => {
 
           {/* NeuroGait */}
           <ProjectCard
-            title="NeuroGait"
-            description="Closed-loop AI control system for gait rehabilitation using FES, proving that EMG from stimulation electrodes alone can replace external sensors."
-            image="img/neurogait-pipeline.png"
+            title="NeuroGait C++"
+            description="Microcontroller optimized closed-loop AI control system for gait rehabilitation using FES, proving that EMG from stimulation electrodes alone can replace external sensors."
+            image="img/neurogait-results.png"
             link="https://github.com/MNR-MarcosOriolPagonabarraga-projects/NeuroGait"
             skills={
               <SkillIconGroup>
@@ -206,7 +206,8 @@ const Projects = () => {
                   The trained models and control logic were converted into
                   memory-optimized C++ code, designed to fit within the
                   constraints of a microcontroller for real-time, on-device
-                  inference in a production FES environment.
+                  inference in a production FES environment. The optimized 
+                  system ran with <strong>4KB</strong> of RAM and <strong>14KB</strong> of flash memory.
                 </p>
                 <p className="text-base text-neutral-300 leading-relaxed">
                   <strong className="text-blue-400">Conclusion</strong>
