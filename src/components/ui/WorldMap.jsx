@@ -1,192 +1,151 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+"use client";;
+import { useRef } from "react";
+import { motion } from "motion/react";
+import DottedMap from "dotted-map";
 
-// Simplified world map path data (mercator projection dots)
-// This creates a dotted world map similar to the Aceternity world-map component
-export function WorldMap({ dots = [], lineColor = "#3b82f6" }) {
+import { useTheme } from "next-themes";
+
+export function WorldMap({
+  dots = [],
+  lineColor = "#0ea5e9"
+}) {
   const svgRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 800, height: 400 });
+  const map = new DottedMap({ height: 100, grid: "diagonal" });
 
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (svgRef.current?.parentElement) {
-        const { width } = svgRef.current.parentElement.getBoundingClientRect();
-        setDimensions({ width, height: width * 0.5 });
-      }
-    };
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
+  const { theme } = useTheme();
 
-  // Convert lat/lng to x/y coordinates on the map
-  function latLngToXY(lat, lng) {
-    const x = ((lng + 180) / 360) * dimensions.width;
-    const y = ((90 - lat) / 180) * dimensions.height;
+  const svgMap = map.getSVG({
+    radius: 0.22,
+    color: "#FFFFFF40",
+    shape: "circle",
+    backgroundColor: "black",
+  });
+
+  const projectPoint = (lat, lng) => {
+    const x = (lng + 180) * (800 / 360);
+    const y = (90 - lat) * (400 / 180);
     return { x, y };
-  }
+  };
+
+  const createCurvedPath = (
+    start,
+    end
+  ) => {
+    const midX = (start.x + end.x) / 2;
+    const midY = Math.min(start.y, end.y) - 50;
+    return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
+  };
 
   return (
-    <div className="relative w-full">
+    <div
+      className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg  relative font-sans">
+      <img
+        src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
+        className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
+        alt="world map"
+        height="495"
+        width="1056"
+        draggable={false} />
       <svg
         ref={svgRef}
-        viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-        className="w-full h-auto"
-        style={{ background: "transparent" }}
-      >
-        {/* World map dots background */}
-        <WorldDots width={dimensions.width} height={dimensions.height} />
-
-        {/* Connection lines (arcs) */}
-        {dots.map((connection, idx) => {
-          const start = latLngToXY(connection.start.lat, connection.start.lng);
-          const end = latLngToXY(connection.end.lat, connection.end.lng);
-
-          // Create a curved path
-          const midX = (start.x + end.x) / 2;
-          const midY = Math.min(start.y, end.y) - Math.abs(end.x - start.x) * 0.15;
-
-          const pathD = `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
-
+        viewBox="0 0 800 400"
+        className="w-full h-full absolute inset-0 pointer-events-none select-none">
+        {dots.map((dot, i) => {
+          const startPoint = projectPoint(dot.start.lat, dot.start.lng);
+          const endPoint = projectPoint(dot.end.lat, dot.end.lng);
           return (
-            <g key={idx}>
-              {/* Shadow path */}
-              <path
-                d={pathD}
-                fill="none"
-                stroke={lineColor}
-                strokeWidth="1"
-                opacity="0.15"
-              />
-              {/* Animated path */}
+            <g key={`path-group-${i}`}>
               <motion.path
-                d={pathD}
+                d={createCurvedPath(startPoint, endPoint)}
                 fill="none"
-                stroke={lineColor}
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{
-                  duration: 1.5,
-                  delay: idx * 0.2,
-                  ease: "easeInOut",
-                }}
-              />
-              {/* Start dot */}
-              <motion.circle
-                cx={start.x}
-                cy={start.y}
-                r="3"
-                fill={lineColor}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: idx * 0.2, duration: 0.3 }}
-              />
-              {/* End dot */}
-              <motion.circle
-                cx={end.x}
-                cy={end.y}
-                r="3"
-                fill={lineColor}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: idx * 0.2 + 1.2, duration: 0.3 }}
-              />
-              {/* Pulsing ring at end */}
-              <motion.circle
-                cx={end.x}
-                cy={end.y}
-                r="3"
-                fill="none"
-                stroke={lineColor}
+                stroke="url(#path-gradient)"
                 strokeWidth="1"
-                initial={{ r: 3, opacity: 0.8 }}
-                animate={{ r: 10, opacity: 0 }}
-                transition={{
-                  duration: 2,
-                  delay: idx * 0.2 + 1.5,
-                  repeat: Infinity,
-                  repeatDelay: 1,
+                initial={{
+                  pathLength: 0,
                 }}
-              />
+                animate={{
+                  pathLength: 1,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5 * i,
+                  ease: "easeOut",
+                }}
+                key={`start-upper-${i}`}></motion.path>
             </g>
           );
         })}
+
+        <defs>
+          <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="white" stopOpacity="0" />
+            <stop offset="5%" stopColor={lineColor} stopOpacity="1" />
+            <stop offset="95%" stopColor={lineColor} stopOpacity="1" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {dots.map((dot, i) => (
+          <g key={`points-group-${i}`}>
+            <g key={`start-${i}`}>
+              <circle
+                cx={projectPoint(dot.start.lat, dot.start.lng).x}
+                cy={projectPoint(dot.start.lat, dot.start.lng).y}
+                r="2"
+                fill={lineColor} />
+              <circle
+                cx={projectPoint(dot.start.lat, dot.start.lng).x}
+                cy={projectPoint(dot.start.lat, dot.start.lng).y}
+                r="2"
+                fill={lineColor}
+                opacity="0.5">
+                <animate
+                  attributeName="r"
+                  from="2"
+                  to="8"
+                  dur="1.5s"
+                  begin="0s"
+                  repeatCount="indefinite" />
+                <animate
+                  attributeName="opacity"
+                  from="0.5"
+                  to="0"
+                  dur="1.5s"
+                  begin="0s"
+                  repeatCount="indefinite" />
+              </circle>
+            </g>
+            <g key={`end-${i}`}>
+              <circle
+                cx={projectPoint(dot.end.lat, dot.end.lng).x}
+                cy={projectPoint(dot.end.lat, dot.end.lng).y}
+                r="2"
+                fill={lineColor} />
+              <circle
+                cx={projectPoint(dot.end.lat, dot.end.lng).x}
+                cy={projectPoint(dot.end.lat, dot.end.lng).y}
+                r="2"
+                fill={lineColor}
+                opacity="0.5">
+                <animate
+                  attributeName="r"
+                  from="2"
+                  to="8"
+                  dur="1.5s"
+                  begin="0s"
+                  repeatCount="indefinite" />
+                <animate
+                  attributeName="opacity"
+                  from="0.5"
+                  to="0"
+                  dur="1.5s"
+                  begin="0s"
+                  repeatCount="indefinite" />
+              </circle>
+            </g>
+          </g>
+        ))}
       </svg>
     </div>
-  );
-}
-
-// Creates a dotted world map pattern
-function WorldDots({ width, height }) {
-  const dotSpacing = 8;
-  const dotRadius = 0.8;
-
-  // Simplified continent boundaries for dot rendering
-  // These are approximate bounding boxes for continents
-  const continents = [
-    // North America
-    { minLat: 15, maxLat: 72, minLng: -170, maxLng: -50 },
-    // South America
-    { minLat: -56, maxLat: 13, minLng: -82, maxLng: -34 },
-    // Europe
-    { minLat: 35, maxLat: 71, minLng: -10, maxLng: 40 },
-    // Africa
-    { minLat: -35, maxLat: 37, minLng: -18, maxLng: 52 },
-    // Asia
-    { minLat: 1, maxLat: 72, minLng: 26, maxLng: 180 },
-    // Australia
-    { minLat: -47, maxLat: -10, minLng: 110, maxLng: 180 },
-    // Japan/Philippines area
-    { minLat: 5, maxLat: 45, minLng: 120, maxLng: 150 },
-  ];
-
-  // More detailed coastline approximation using point-in-polygon-ish approach
-  function isLand(lat, lng) {
-    // Check if point is roughly within any continent
-    for (const c of continents) {
-      if (lat >= c.minLat && lat <= c.maxLat && lng >= c.minLng && lng <= c.maxLng) {
-        // Add some noise/exclusion for oceans within bounding boxes
-        // Caribbean Sea
-        if (lat > 10 && lat < 25 && lng > -90 && lng < -60 && Math.random() > 0.3) continue;
-        // Hudson Bay
-        if (lat > 50 && lat < 65 && lng > -95 && lng < -75 && Math.random() > 0.4) continue;
-        // Mediterranean
-        if (lat > 30 && lat < 42 && lng > 0 && lng < 36 && Math.random() > 0.5) continue;
-        // Indian Ocean gap between Africa and Asia
-        if (lat > -10 && lat < 25 && lng > 40 && lng < 70 && Math.random() > 0.3) continue;
-        // South China Sea
-        if (lat > 0 && lat < 20 && lng > 100 && lng < 120 && Math.random() > 0.4) continue;
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const dots = [];
-  for (let y = 0; y < height; y += dotSpacing) {
-    for (let x = 0; x < width; x += dotSpacing) {
-      const lng = (x / width) * 360 - 180;
-      const lat = 90 - (y / height) * 180;
-      if (isLand(lat, lng)) {
-        dots.push({ x, y });
-      }
-    }
-  }
-
-  return (
-    <g>
-      {dots.map((dot, idx) => (
-        <circle
-          key={idx}
-          cx={dot.x}
-          cy={dot.y}
-          r={dotRadius}
-          fill="currentColor"
-          className="text-neutral-600"
-        />
-      ))}
-    </g>
   );
 }

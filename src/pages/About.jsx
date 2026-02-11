@@ -136,10 +136,6 @@ function AboutHero() {
             transition={{ delay: 0.2 }}
             className="flex items-center gap-3 mb-4"
           >
-            <div className="h-px w-8 bg-blue-500" />
-            <span className="text-sm font-mono text-blue-400 tracking-wider uppercase">
-              About Me
-            </span>
           </motion.div>
 
           <motion.h1
@@ -186,12 +182,6 @@ function HobbySection({ id, title, subtitle, children }) {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-px w-8 bg-blue-500" />
-            <span className="text-sm font-mono text-blue-400 tracking-wider uppercase">
-              {subtitle || id}
-            </span>
-          </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-neutral-100 mb-10">
             {title}
           </h2>
@@ -291,59 +281,26 @@ function TravellingSection() {
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: -1.28, lng: 36.81 } }, // Nairobi
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 9.92, lng: -84.09 } }, // Costa Rica
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 45.92, lng: 6.86 } }, // Chamonix
-    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 40.85, lng: 14.26 } }, // Naples
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 40.8518, lng: 14.2681} }, // Naples
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 45.4064, lng: 11.8768} }, // Padova
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 38.1157, lng: 13.3615} }, // Palermo
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 41.9028, lng: 12.4964} }, // Rome
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 45.4408, lng: 12.3155} }, // Venice
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 51.50, lng: -0.12 } }, // London
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 53.34, lng: -6.26 } }, // Dublin
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 41.15, lng: -8.62 } }, // Oporto
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 38.7223, lng: -9.1393} }, // Lisbon
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 37.74, lng: -25.67 } }, // Azores
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 27.8251, lng: 99.7056 } }, // Shangri-La
     { start: { lat: 41.39, lng: 2.15 }, end: { lat: 31.23, lng: 121.47 } }, // Shanghai
-    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 52.36, lng: 4.90 } }, // Amsterdam
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 24.7805, lng: 110.4966 }}, // Yangshuo
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 29.1171, lng: 110.4792 }}, // Zhangjiajie
+    { start: { lat: 41.39, lng: 2.15 }, end: { lat: 52.3676, lng: 4.9041 }}, // Amsterdam}
   ];
 
   return (
     <HobbySection id="travel" title="Travelling" subtitle="Adventure">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-        className="rounded-2xl border border-white/[0.06] bg-white/[0.01] p-4 lg:p-8 overflow-hidden"
-      >
-        <WorldMap dots={connections} lineColor="#3b82f6" />
-
-        {/* Places list */}
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {[
-            "Nairobi, Kenya",
-            "Costa Rica",
-            "Chamonix, France",
-            "Naples, Italy",
-            "Padova, Italy",
-            "Palermo, Sicily",
-            "Rome, Italy",
-            "Venice, Italy",
-            "London, UK",
-            "Dublin, Ireland",
-            "Oporto, Portugal",
-            "Lisbon, Portugal",
-            "Azores, Portugal",
-            "Lijiang, China",
-            "Shangri-La, China",
-            "Yangshuo, China",
-            "Zhangjiajie, China",
-            "Shanghai, China",
-            "Amsterdam, Netherlands",
-          ].map((place) => (
-            <div
-              key={place}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-xs text-neutral-400"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-              {place}
-            </div>
-          ))}
-        </div>
-      </motion.div>
+        <WorldMap dots={connections} lineColor="#3b82f6" /> 
     </HobbySection>
   );
 }

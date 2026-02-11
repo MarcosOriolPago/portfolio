@@ -10,7 +10,7 @@ import {
 
 const timelineEntries = [
   {
-    title: "2024",
+    title: "2024 - Present",
     content: (
       <div className="flex flex-col gap-8">
         {/* IDNEO */}
@@ -216,12 +216,6 @@ function TimelineSection() {
     <section id="work" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <RevealOnScroll>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-px w-8 bg-blue-500" />
-            <span className="text-base font-mono text-blue-400 tracking-wider uppercase">
-              Experience
-            </span>
-          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-neutral-100 mb-6">
             Career History
           </h2>

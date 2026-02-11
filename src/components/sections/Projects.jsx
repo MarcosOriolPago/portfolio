@@ -14,12 +14,6 @@ const Projects = () => {
     <section id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <RevealOnScroll>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-px w-8 bg-blue-500" />
-            <span className="text-base font-mono text-blue-400 tracking-wider uppercase">
-              Work
-            </span>
-          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-neutral-100 mb-6">
             Projects
           </h2>
