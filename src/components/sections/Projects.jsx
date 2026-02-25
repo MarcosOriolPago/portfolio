@@ -6,7 +6,7 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import {
   SiJavascript, SiReact, SiTailwindcss, SiGooglecloud,
   SiPython, SiC, SiArduino, SiNumpy, SiGit, SiPytorch, SiVite,
-  SiDocker, SiLatex, SiScikitlearn, SiCplusplus,
+  SiDocker, SiLatex, SiScikitlearn, SiCplusplus, SiQt,
 } from "react-icons/si";
 
 const Projects = () => {
@@ -217,6 +217,66 @@ const Projects = () => {
                   walking mode and gait phase classification, potentially
                   eliminating the need for additional external sensors in foot
                   drop rehabilitation devices.
+                </p>
+              </InnerProjectDescription>
+            }
+          />
+
+          {/* FuSpine */}
+          <ProjectCard
+            title="FuSpine: Focused Ultrasound for Spinal Cord Stimulation"
+            description="Software for a focused ultrasound (FUS) stimulation device targeting spinal cord injury recovery. AI-powered medical planning application developed at PRBB - Hospital del Mar."
+            image="img/fuspine.png"
+            link=""
+            skills={
+              <SkillIconGroup>
+                <SiPython title="Python" className="text-yellow-400" />
+                <SiPytorch title="PyTorch" className="text-orange-400" />
+                <SiNumpy title="NumPy" className="text-blue-900" />
+                <SiQt title="PyQt" className="text-green-500" />
+              </SkillIconGroup>
+            }
+            detailedDescription={
+              <InnerProjectDescription>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
+                  <strong className="text-blue-400">Context</strong>
+                  <br />
+                  FuSpine is a medical product development project focused on using
+                  Focused Ultrasound (FUS) for spinal cord neuronal stimulation. The
+                  goal is to aid recovery from spinal cord injuries through
+                  non-invasive stimulation techniques.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
+                  <strong className="text-blue-400">Role</strong>
+                  <br />
+                  As part of a multidisciplinary team at PRBB - Hospital del Mar
+                  (Barcelona), my role consisted of developing the software for a
+                  medical planning application that helps doctors planify the
+                  stimulation procedure.
+                </p>
+                <img
+                  src="img/fuspine.png"
+                  alt="Focused ultrasound stimulating a neuron"
+                  className="rounded-xl border border-white/10 mb-3"
+                />
+                <p className="text-sm text-neutral-500 mb-5">
+                  <strong>Figure:</strong> Focused ultrasound transducer stimulating
+                  neuronal tissue for spinal cord injury recovery.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-3">
+                  <strong className="text-blue-400">AI Tools Developed</strong>
+                </p>
+                <ul className="text-base text-neutral-300 leading-relaxed mb-5 list-disc list-inside flex flex-col gap-1.5">
+                  <li>Tissue segmentation of MRI images</li>
+                  <li>MRI to CT conversion using deep learning</li>
+                  <li>Optimal FUS trajectory suggestion to effectively reach the spinal cord</li>
+                </ul>
+                <p className="text-base text-neutral-300 leading-relaxed">
+                  <strong className="text-blue-400">Tech Stack</strong>
+                  <br />
+                  Python with PyTorch for deep learning models, NumPy for numerical
+                  computation, and PyQt for the desktop GUI application used by
+                  medical professionals.
                 </p>
               </InnerProjectDescription>
             }
