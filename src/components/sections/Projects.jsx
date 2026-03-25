@@ -28,7 +28,7 @@ const Projects = () => {
             title="SpikeVerse: Open-Source Visual Playground for Spiking Neural Networks"
             description="A visual, interactive playground for building, simulating, and understanding Spiking Neural Networks with GPU-accelerated computation through GeNN."
             image="img/snnverse.png"
-            link="https://github.com/MarcosOriolPago/SNNverse"
+            link="https://spike-verse.oriol-tech.com"
             skills={
               <SkillIconGroup>
                 <SiReact title="React" className="text-blue-400" />
@@ -277,6 +277,57 @@ const Projects = () => {
                   Python with PyTorch for deep learning models, NumPy for numerical
                   computation, and PyQt for the desktop GUI application used by
                   medical professionals.
+                </p>
+              </InnerProjectDescription>
+            }
+          />
+
+          {/* Pitline Brand */}
+          <ProjectCard
+            title="Pitline Brand Website"
+            description="E-commerce platform for a motorsport-inspired clothing brand. Features Stripe integration, product catalog, and shopping cart functionality."
+            image="img/pitline.png"
+            link="https://be-pitline.oriol-tech.com"
+            skills={
+              <SkillIconGroup>
+                <SiReact title="React" className="text-blue-400" />
+                <SiJavascript title="JavaScript" className="text-orange-400" />
+                <SiTailwindcss title="Tailwindcss" className="text-blue-300" />
+              </SkillIconGroup>
+            }
+            detailedDescription={
+              <InnerProjectDescription>
+                <p className="text-base text-neutral-300 leading-relaxed mb-5">
+                  <strong className="text-blue-400">Overview</strong>
+                  <br />
+                  Pitline Racing is a motorsport-inspired clothing brand e-commerce platform.
+                  The website features a modern, dark aesthetic that reflects the racing heritage
+                  and adventure spirit of the brand.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed mb-3">
+                  <strong className="text-blue-400">Features</strong>
+                </p>
+                <ul className="text-base text-neutral-300 leading-relaxed mb-5 list-disc list-inside flex flex-col gap-1.5">
+                  <li>Full product catalog with detailed product pages</li>
+                  <li>Shopping cart with persistent state</li>
+                  <li>Stripe payment integration for secure checkout</li>
+                  <li>Responsive design optimized for all devices</li>
+                  <li>Custom branding and motorsport-themed aesthetics</li>
+                </ul>
+                <img
+                  src="img/pitline.png"
+                  alt="Pitline Racing website checkout"
+                  className="rounded-xl border border-white/10 mb-3"
+                />
+                <p className="text-sm text-neutral-500 mb-5">
+                  <strong>Figure:</strong> Checkout page showing the Dakar Heritage Sweater
+                  with Stripe payment integration.
+                </p>
+                <p className="text-base text-neutral-300 leading-relaxed">
+                  <strong className="text-blue-400">Tech Stack</strong>
+                  <br />
+                  React for the frontend, Tailwind CSS for styling, and Stripe for
+                  secure payment processing.
                 </p>
               </InnerProjectDescription>
             }
