@@ -28,7 +28,8 @@ const Projects = () => {
             title="SpikeVerse: Open-Source Visual Playground for Spiking Neural Networks"
             description="A visual, interactive playground for building, simulating, and understanding Spiking Neural Networks with GPU-accelerated computation through GeNN."
             image="img/snnverse.png"
-            link="https://spike-verse.oriol-tech.com"
+            link="https://github.com/MarcosOriolPago/SNNverse"
+            websiteLink="https://spike-verse.oriol-tech.com"
             skills={
               <SkillIconGroup>
                 <SiReact title="React" className="text-blue-400" />
@@ -287,7 +288,7 @@ const Projects = () => {
             title="Pitline Brand Website"
             description="E-commerce platform for a motorsport-inspired clothing brand. Features Stripe integration, product catalog, and shopping cart functionality."
             image="img/pitline.png"
-            link="https://be-pitline.oriol-tech.com"
+            websiteLink="https://be-pitline.oriol-tech.com"
             skills={
               <SkillIconGroup>
                 <SiReact title="React" className="text-blue-400" />
