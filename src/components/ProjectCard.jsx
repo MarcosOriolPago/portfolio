@@ -10,6 +10,7 @@ function ProjectCard({
   description,
   image,
   link,
+  websiteLink,
   skills,
   detailedDescription,
 }) {
@@ -60,6 +61,17 @@ function ProjectCard({
                     <span>Details</span>
                     <ChevronRight size={16} />
                   </button>
+                )}
+                {websiteLink && (
+                  <a
+                    href={websiteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                  >
+                    <span>Website</span>
+                    <ExternalLink size={14} />
+                  </a>
                 )}
                 {link && (
                   <a
