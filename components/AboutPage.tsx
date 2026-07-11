@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { User, Utensils, Bike, Plane, Music, ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -11,7 +10,7 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import { Spotlight } from "./ui/Spotlight";
 import Gallery from "./Gallery";
 import { Footer } from "./Footer";
-import { OptimizedImage } from "./OptimizedImage";
+import { ProfileCarousel } from "./ProfileCarousel";
 import {
   profileCarouselImages,
   cookingGallery,
@@ -58,36 +57,6 @@ export function AboutPage() {
 }
 
 function AboutHero() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-
-  const preloadAdjacent = useCallback((index: number) => {
-    const next = (index + 1) % profileCarouselImages.length;
-    [profileCarouselImages[index], profileCarouselImages[next]].forEach((path) => {
-      const img = new window.Image();
-      img.src = path;
-    });
-  }, []);
-
-  useEffect(() => {
-    preloadAdjacent(0);
-  }, [preloadAdjacent]);
-
-  useEffect(() => {
-    preloadAdjacent(currentIndex);
-  }, [currentIndex, preloadAdjacent]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % profileCarouselImages.length);
-        setFade(true);
-      }, 500);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="about"
@@ -98,28 +67,7 @@ function AboutHero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--color-background)_70%)]" />
 
       <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative w-72 h-72 lg:w-80 lg:h-80 shrink-0"
-        >
-          <div className="absolute inset-0 rounded-2xl bg-blue-500/10 blur-3xl" />
-          <OptimizedImage
-            src={profileCarouselImages[currentIndex]}
-            alt="Profile"
-            fill
-            priority={currentIndex === 0}
-            quality={70}
-            sizes="(max-width: 1024px) 288px, 320px"
-            className={`rounded-2xl border border-white/10 shadow-2xl object-cover transition-opacity duration-700 ${
-              fade ? "opacity-100" : "opacity-0"
-            }`}
-          />
-          <div className="absolute bottom-3 right-3 px-2 py-1 rounded-lg bg-black/50 backdrop-blur-sm text-xs text-neutral-400 font-mono">
-            {currentIndex + 1}/{profileCarouselImages.length}
-          </div>
-        </motion.div>
+        <ProfileCarousel images={profileCarouselImages} />
 
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
           <motion.h1
