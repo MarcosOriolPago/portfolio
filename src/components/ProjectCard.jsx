@@ -30,9 +30,10 @@ function ProjectCard({
   return (
     <>
       <RevealOnScroll>
-        <GlowingCard className="overflow-hidden">
+        {/* 1. Add 'flex flex-col' to GlowingCard so it stacks its children */}
+        <GlowingCard className="flex flex-col overflow-hidden">
           {/* Image */}
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden shrink-0">
             <img
               src={image}
               alt={title}
@@ -42,7 +43,8 @@ function ProjectCard({
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          {/* 2. Change 'h-full' to 'flex-1' so it fills the remaining space, not the whole card height */}
+          <div className="p-6 flex flex-col flex-1">
             <h3 className="text-2xl font-semibold text-neutral-100 mb-3">
               {title}
             </h3>
@@ -50,8 +52,10 @@ function ProjectCard({
               {description}
             </p>
 
-            <div className="flex items-center justify-between">
+            {/* mt-auto works perfectly now to push this to the bottom */}
+            <div className="flex justify-between mt-auto pt-4">
               {skills}
+              
               <div className="flex items-center gap-4">
                 {detailedDescription && (
                   <button

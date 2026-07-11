@@ -22,7 +22,7 @@ export function GlowingCard({ children, className = "" }) {
       ref={ref}
       onMouseMove={handleMouse}
       whileHover={{ y: -2 }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-neutral-950/50 backdrop-blur-sm ${className}`}
+      className={`group relative overflow-hidden h-full rounded-2xl border border-white/[0.08] bg-neutral-950/50 backdrop-blur-sm ${className}`}
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
