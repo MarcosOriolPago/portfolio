@@ -1,21 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { Timeline } from "../ui/AceternityTimeline";
 import { RevealOnScroll } from "../RevealOnScroll";
 
 import type { IconType } from "react-icons";
 import {
   SiPython, SiPytorch, SiNumpy, SiGit, SiTensorflow, SiC, SiCplusplus, SiRos, SiDocker, SiLinux, SiAmd,
+  SiBluetooth,
 } from "react-icons/si";
 
 type Job = {
   period: string;
   role: string;
   org: string;
-  orgUrl: string;
+  orgUrl?: string;
   location: string;
   description: string;
+  /** Optional link to a related project page on this site. */
+  project?: { title: string; href: string };
   skills: { icon: IconType; label: string; color: string }[];
 };
 
@@ -33,17 +38,30 @@ function JobCard({ job }: { job: Job }) {
 
       <h3 className="text-2xl font-semibold text-neutral-900 mb-1">{job.role}</h3>
       <p className="text-base text-neutral-600 mb-1">
-        <a
-          href={job.orgUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-600 transition-colors duration-200 underline underline-offset-4 decoration-neutral-300 hover:decoration-blue-400"
-        >
-          {job.org}
-        </a>
+        {job.orgUrl ? (
+          <a
+            href={job.orgUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-600 transition-colors duration-200 underline underline-offset-4 decoration-neutral-300 hover:decoration-blue-400"
+          >
+            {job.org}
+          </a>
+        ) : (
+          job.org
+        )}
       </p>
       <p className="text-sm text-neutral-500 mb-5">{job.location}</p>
       <p className="text-base text-neutral-700 leading-relaxed mb-6">{job.description}</p>
+      {job.project && (
+        <Link
+          href={job.project.href}
+          className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 transition-colors mb-6"
+        >
+          {job.project.title}
+          <ChevronRight size={16} />
+        </Link>
+      )}
 
       <div className="flex flex-wrap gap-2.5">
         {job.skills.map((skill) => (
@@ -71,7 +89,7 @@ const i3s: Job = {
   orgUrl: "https://www.i3s.up.pt/",
   location: "Porto, Portugal",
   description:
-    "Developed spiking neuron models detecting memory-related patterns in mouse hippocampus, deployed on neuromorphic hardware and low-power microcontrollers for closed-loop detection.",
+    "Developed spiking neuron models detecting memory-related patterns in mouse hippocampus, deployed on Intel's Loihi 2 neuromorphic chip.",
   skills: [python, pytorch, numpy, { icon: SiLinux, label: "Linux", color: "#FCC624" }],
 };
 
@@ -119,6 +137,22 @@ const ini: Job = {
   ],
 };
 
+const ethrc: Job = {
+  period: "Sep 2026 - Feb 2027",
+  role: "Robotics Team Lead",
+  org: "ETH Robotics Club (ETHRC)",
+  location: "Zürich, Switzerland",
+  description:
+    "Led software and model training for a sEMG-controlled prosthetic hand built from scratch by a 17-person team. Co-designed a low-cost 64-electrode sEMG array, chose the smallest MCU able to run the model while sampling 64 channels at 2 kHz, and managed a silicone feedback armband fed by the hand over BLE.",
+  project: { title: "sEMG-Controlled Prosthetic Hand", href: "/semg-prosthetic-hand" },
+  skills: [
+    python,
+    pytorch,
+    { icon: SiC, label: "C", color: "#A8B9CC" },
+    { icon: SiBluetooth, label: "BLE", color: "#0082FC" },
+  ],
+};
+
 const timelineEntries = [
   { title: "Early 2024", content: <JobCard job={i3s} /> },
   {
@@ -130,7 +164,15 @@ const timelineEntries = [
       </div>
     ),
   },
-  { title: "2026 - Present", content: <JobCard job={ini} /> },
+  {
+    title: "2026 - Present",
+    content: (
+      <div className="flex flex-col gap-8">
+        <JobCard job={ini} />
+        <JobCard job={ethrc} />
+      </div>
+    ),
+  },
 ];
 
 function TimelineSection() {

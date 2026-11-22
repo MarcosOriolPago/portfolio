@@ -520,8 +520,8 @@ recording.save("emg.h5")`}
   {
     slug: "snn-ripples",
     theme: "Neuromorphic",
-    title: "Final Degree Thesis: SNNs for Closed-Loop Signal Detection",
-    description: "Neuromorphic computation on low-power microcontrollers for closed-loop signal detection applications.",
+    title: "Final Degree Thesis: SNNs on the Loihi 2 Neuromorphic Chip",
+    description: "Spiking neural networks detecting memory-related patterns in mouse hippocampus, deployed on Intel's Loihi 2 neuromorphic chip.",
     image: "img/loihi2.webp",
     link: "https://github.com/MarcosOriolPago/LAVA_SNN_ripples",
     skills: (

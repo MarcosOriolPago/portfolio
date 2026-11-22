@@ -5,6 +5,7 @@ const educationEntries = [
   {
     institution: "Universitat Politecnica de Catalunya (UPC)",
     degree: "Master of Neuroengineering and Rehabilitation, Neuroscience",
+    thesis: "Master's thesis at the Institute of Neuroinformatics, ETH Zürich & UZH",
     period: "Sept. 2025 - Jan. 2027",
     details: "Robotics - Neurophysiology - Software",
     logo: "img/upc.webp",
@@ -63,9 +64,12 @@ export default function Education() {
                         {entry.period}
                       </span>
                     </div>
-                    <p className="text-base text-blue-700/90 mb-3">
+                    <p className={`text-base text-blue-700/90 ${"thesis" in entry ? "mb-1" : "mb-3"}`}>
                       {entry.degree}
                     </p>
+                    {"thesis" in entry && (
+                      <p className="text-sm text-neutral-600 mb-3">{entry.thesis}</p>
+                    )}
                     {entry.details && (
                       <div className="flex flex-wrap gap-2">
                         {entry.details.split(" - ").map((skill) => (
