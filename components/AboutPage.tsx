@@ -38,7 +38,7 @@ export function AboutPage() {
       >
         <Link
           href="/"
-          className="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-neutral-950/80 backdrop-blur-md text-sm text-neutral-300 hover:text-white hover:border-white/20 transition-all duration-300"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl border border-black/10 bg-white/80 backdrop-blur-md text-sm text-neutral-700 hover:text-neutral-900 hover:border-black/20 transition-all duration-300"
         >
           <ArrowLeft size={16} />
           <span>Home</span>
@@ -63,7 +63,7 @@ function AboutHero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-6"
     >
       <Spotlight fill="#3b82f6" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--color-background)_70%)]" />
 
       <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 max-w-[80%] mx-auto">
@@ -74,17 +74,17 @@ function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl lg:text-5xl font-bold text-neutral-100 mb-6 text-balance"
+            className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6 text-balance"
           >
-            The Person Behind{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              the Code
+            Outside{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              the Lab
             </span>
           </motion.h1>
 
           <TextGenerateEffect
-            words="I am an energetic and optimistic person with great motivation to learn and grow. I find the world fascinating, specifically the biological systems. My ambition led me to learn software engineering due to its versatility and countless applications."
-            className="text-2xl text-neutral-400 leading-relaxed mb-4"
+            words="I am an energetic and optimistic person who enjoys understanding how complex systems work, from biological ones like the brain to the electronics and software we build. I love learning, and I am happiest when a problem makes me dig into something new."
+            className="text-2xl text-neutral-600 leading-relaxed mb-4"
           />
 
           <motion.p
@@ -114,14 +114,14 @@ function HobbySection({
 }) {
   return (
     <section id={id} className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-100 mb-10">
+          <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-10">
             {title}
           </h2>
         </motion.div>

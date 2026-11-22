@@ -29,7 +29,7 @@ export function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-4 left-4 right-4 lg:top-6 lg:left-[15vw] lg:right-[15vw] z-40 transition-all duration-500 ${
         scrolled
-          ? "bg-neutral-950/80 backdrop-blur-xl border border-white/10 shadow-2xl"
+          ? "bg-white/80 backdrop-blur-xl border border-black/10 shadow-2xl"
           : "bg-transparent border border-transparent"
       } rounded-2xl`}
     >
@@ -37,13 +37,13 @@ export function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
         <div className="flex justify-between items-center h-14">
           <a
             href="#main"
-            className="font-mono text-base lg:text-lg font-bold text-neutral-100 hover:text-white transition-colors"
+            className="font-mono text-base lg:text-lg font-bold text-neutral-900 hover:text-neutral-900 transition-colors"
           >
-            marcos<span className="text-blue-400">.tech</span>
+            marcos<span className="text-blue-600">.tech</span>
           </a>
 
           <button
-            className="w-7 h-5 relative cursor-pointer z-40 md:hidden text-neutral-300 hover:text-white transition-colors"
+            className="w-7 h-5 relative cursor-pointer z-40 md:hidden text-neutral-700 hover:text-neutral-900 transition-colors"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
           >
@@ -69,7 +69,7 @@ export function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
               <a
                 key={item}
                 href={`#${item}`}
-                className="relative px-4 py-2 text-sm text-neutral-400 hover:text-neutral-100 transition-colors duration-200 rounded-lg hover:bg-white/[0.04]"
+                className="relative px-4 py-2 text-sm text-neutral-600 hover:text-neutral-900 transition-colors duration-200 rounded-lg hover:bg-black/[0.04]"
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </a>

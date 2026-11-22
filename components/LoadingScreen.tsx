@@ -31,14 +31,14 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   return (
     <motion.div
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-neutral-950 flex flex-col items-center justify-center px-4 text-center"
+      className="fixed inset-0 z-50 bg-background flex flex-col items-center justify-center px-4 text-center"
     >
-      <div className="mb-4 text-2xl sm:text-4xl font-mono font-bold text-neutral-100 leading-tight">
+      <div className="mb-4 text-2xl sm:text-4xl font-mono font-bold text-neutral-900 leading-tight">
         {text}
-        <span className="animate-blink ml-1 text-blue-400">|</span>
+        <span className="animate-blink ml-1 text-blue-600">|</span>
       </div>
 
-      <div className="w-48 h-px bg-white/10 rounded-full overflow-hidden mt-4">
+      <div className="w-48 h-px bg-black/10 rounded-full overflow-hidden mt-4">
         <div className="h-full w-1/3 bg-blue-500 rounded-full animate-loading-bar" />
       </div>
     </motion.div>

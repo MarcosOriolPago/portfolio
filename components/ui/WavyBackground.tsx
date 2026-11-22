@@ -19,7 +19,7 @@ export function WavyBackground({
   className = "",
   colors,
   waveWidth = 50,
-  backgroundFill = "#050505",
+  backgroundFill = "#eceef1",
   blur = 10,
   speed = "fast",
   waveOpacity = 0.5,

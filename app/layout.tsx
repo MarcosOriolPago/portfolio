@@ -18,9 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Marcos Oriol | Neuroengineer & Software Engineer",
+  title: "Marcos Oriol | Neuroengineer · ML, Robotics & Neuromorphic Systems",
   description:
-    "Personal portfolio of Marcos Oriol Pagonabarraga — neuroengineering, software engineering, and project showcase.",
+    "Marcos Oriol Pagonabarraga — neuroengineer working at the intersection of bioengineering, neuroscience and robotics.",
   metadataBase: new URL("https://marcos.oriol-tech.com"),
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body

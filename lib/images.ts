@@ -1,6 +1,6 @@
 /** Convert legacy jpg/png paths to webp after build-time compression. */
 export function toWebp(src: string): string {
-  if (/\.(gif|webp|pdf|svg)$/i.test(src)) return src;
+  if (/\.(gif|webp|pdf|svg|mp4|webm)$/i.test(src)) return src;
   return src.replace(/\.(jpe?g|png)$/i, ".webp");
 }
 

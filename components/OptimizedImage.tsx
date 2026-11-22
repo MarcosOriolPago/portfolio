@@ -7,6 +7,8 @@ type OptimizedImageProps = Omit<ImageProps, "src"> & {
   src: string;
   alt: string;
   quality?: number;
+  /** Videos only: show the first frame and play while hovered, instead of autoplaying. */
+  playOnHover?: boolean;
 };
 
 export function OptimizedImage({
@@ -19,9 +21,28 @@ export function OptimizedImage({
   width,
   height,
   sizes,
+  playOnHover,
   ...rest
 }: OptimizedImageProps) {
   const resolved = publicSrc(src);
+
+  // Short clips (.mp4/.webm) play like a GIF: muted, looping, no controls.
+  if (/\.(mp4|webm)$/i.test(resolved)) {
+    return (
+      <video
+        src={playOnHover ? `${resolved}#t=0.1` : resolved}
+        aria-label={alt}
+        autoPlay={!playOnHover}
+        muted
+        loop
+        playsInline
+        preload={priority ? "auto" : "metadata"}
+        onMouseEnter={playOnHover ? (e) => void e.currentTarget.play().catch(() => {}) : undefined}
+        onMouseLeave={playOnHover ? (e) => e.currentTarget.pause() : undefined}
+        className={`${fill ? "absolute inset-0 h-full w-full" : ""} ${className ?? ""}`}
+      />
+    );
+  }
 
   if (/\.gif$/i.test(resolved)) {
     return (

@@ -22,11 +22,11 @@ export function MobileMenu({ menuOpen, setMenuOpen }: MobileMenuProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-neutral-950/95 backdrop-blur-xl"
+          className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white/95 backdrop-blur-xl"
         >
           <button
             onClick={() => setMenuOpen(false)}
-            className="absolute top-6 right-6 text-neutral-300 text-3xl focus:outline-none cursor-pointer hover:text-white transition-colors"
+            className="absolute top-6 right-6 text-neutral-700 text-3xl focus:outline-none cursor-pointer hover:text-neutral-900 transition-colors"
             aria-label="Close Menu"
           >
             <svg
@@ -53,7 +53,7 @@ export function MobileMenu({ menuOpen, setMenuOpen }: MobileMenuProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="text-2xl font-semibold text-neutral-300 hover:text-white my-4 transition-colors"
+              className="text-2xl font-semibold text-neutral-700 hover:text-neutral-900 my-4 transition-colors"
             >
               {link.label}
             </motion.a>
