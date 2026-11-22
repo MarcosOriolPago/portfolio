@@ -34,7 +34,7 @@ export function Timeline({ data }: TimelineProps) {
 
   return (
     <div className="w-full" ref={containerRef}>
-      <div ref={ref} className="relative max-w-6xl mx-auto">
+      <div ref={ref} className="relative max-w-7xl mx-auto">
         {data.map((item, index) => (
           <div
             key={index}

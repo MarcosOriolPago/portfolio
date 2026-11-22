@@ -25,9 +25,9 @@ export function WorldMap({ dots = [], lineColor = "#0ea5e9" }: WorldMapProps) {
       map: mapInstance,
       svgMap: mapInstance.getSVG({
         radius: 0.22,
-        color: "#FFFFFF40",
+        color: "#00000030",
         shape: "circle",
-        backgroundColor: "black",
+        backgroundColor: "transparent",
       }),
       width: mapInstance.image.width,
       height: mapInstance.image.height,

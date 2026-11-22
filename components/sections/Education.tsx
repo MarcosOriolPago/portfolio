@@ -29,12 +29,12 @@ const educationEntries = [
 export default function Education() {
   return (
     <section id="education" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <RevealOnScroll>
-          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-100 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
             Education
           </h2>
-          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mb-16">
+          <p className="text-lg text-neutral-600 leading-relaxed max-w-2xl mb-16">
             My academic background in bioengineering and neuroengineering.
           </p>
         </RevealOnScroll>
@@ -42,7 +42,7 @@ export default function Education() {
         <div className="flex flex-col gap-6">
           {educationEntries.map((entry) => (
             <RevealOnScroll key={entry.institution}>
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 lg:p-8 transition-colors duration-300 hover:border-white/[0.14] hover:bg-white/[0.03]">
+              <div className="rounded-2xl border border-black/[0.08] bg-black/[0.02] p-6 lg:p-8 transition-colors duration-300 hover:border-black/[0.14] hover:bg-black/[0.03]">
                 <div className="flex items-start gap-4">
                   <div className="relative mt-1 shrink-0 flex items-center justify-center w-18 h-18 rounded-xl bg-blue-500/10 border border-blue-500/20">
                     <OptimizedImage
@@ -56,14 +56,14 @@ export default function Education() {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-                      <h3 className="text-lg font-semibold text-neutral-100">
+                      <h3 className="text-lg font-semibold text-neutral-900">
                         {entry.institution}
                       </h3>
                       <span className="text-sm font-mono text-neutral-500 shrink-0">
                         {entry.period}
                       </span>
                     </div>
-                    <p className="text-base text-blue-300/80 mb-3">
+                    <p className="text-base text-blue-700/90 mb-3">
                       {entry.degree}
                     </p>
                     {entry.details && (
@@ -71,7 +71,7 @@ export default function Education() {
                         {entry.details.split(" - ").map((skill) => (
                           <span
                             key={skill}
-                            className="px-3 py-1 text-sm rounded-full bg-white/[0.04] text-neutral-400 border border-white/[0.06]"
+                            className="px-3 py-1 text-sm rounded-full bg-black/[0.04] text-neutral-600 border border-black/[0.06]"
                           >
                             {skill}
                           </span>

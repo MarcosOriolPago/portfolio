@@ -25,7 +25,7 @@ export default function Gallery({ imgs_folder }: GalleryProps) {
             className="mb-4 break-inside-avoid"
           >
             <div
-              className="group relative overflow-hidden rounded-xl border border-white/[0.06] cursor-pointer"
+              className="group relative overflow-hidden rounded-xl border border-black/[0.06] cursor-pointer"
               onClick={() => setSelectedImg(img)}
             >
               <OptimizedImage

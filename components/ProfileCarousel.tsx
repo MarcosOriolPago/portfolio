@@ -88,10 +88,10 @@ export function ProfileCarousel({ images, className = "" }: ProfileCarouselProps
     >
       <div className="absolute inset-0 rounded-2xl bg-blue-500/10 blur-3xl" />
 
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 shadow-2xl bg-white">
         {!isReady ? (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-blue-400 animate-spin" />
+            <div className="w-8 h-8 rounded-full border-2 border-black/20 border-t-blue-400 animate-spin" />
           </div>
         ) : (
           images.map((src, index) => (
@@ -128,7 +128,7 @@ export function ProfileCarousel({ images, className = "" }: ProfileCarouselProps
               <ChevronRight size={20} />
             </button>
 
-            <div className="absolute bottom-3 right-3 z-20 px-2 py-1 rounded-lg bg-black/50 backdrop-blur-sm text-xs text-neutral-400 font-mono">
+            <div className="absolute bottom-3 right-3 z-20 px-2 py-1 rounded-lg bg-black/50 backdrop-blur-sm text-xs text-neutral-600 font-mono">
               {currentIndex + 1}/{images.length}
             </div>
           </>

@@ -25,7 +25,7 @@ export default function ViewPageButton({
 
   return (
     <Link href={`/${page}`}>
-      <button className="group relative overflow-hidden px-4 py-2 rounded-xl text-sm text-neutral-300 font-medium cursor-pointer border border-white/10 bg-white/[0.03] hover:border-white/20 hover:text-white hover:bg-white/[0.06] transition-all duration-300">
+      <button className="group relative overflow-hidden px-4 py-2 rounded-xl text-sm text-neutral-700 font-medium cursor-pointer border border-black/10 bg-black/[0.03] hover:border-black/20 hover:text-neutral-900 hover:bg-black/[0.06] transition-all duration-300">
         <div className="relative z-10 flex items-center gap-1.5">
           {goBack ? (
             <>

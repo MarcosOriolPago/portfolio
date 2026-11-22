@@ -4,9 +4,10 @@ import { useEffect, useRef } from "react";
 
 interface RevealOnScrollProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export function RevealOnScroll({ children }: RevealOnScrollProps) {
+export function RevealOnScroll({ children, className = "" }: RevealOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export function RevealOnScroll({ children }: RevealOnScrollProps) {
   }, []);
 
   return (
-    <div ref={ref} className="reveal">
+    <div ref={ref} className={`reveal ${className}`}>
       {children}
     </div>
   );

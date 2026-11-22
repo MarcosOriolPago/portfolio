@@ -39,17 +39,17 @@ export function BentoGridItem({
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-sm transition-colors hover:border-white/20 ${onClick ? "cursor-pointer" : ""} ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-black/10 bg-black/[0.02] p-6 backdrop-blur-sm transition-colors hover:border-black/20 ${onClick ? "cursor-pointer" : ""} ${className}`}
     >
       {header && <div className="mb-4">{header}</div>}
       <div className="flex items-center gap-3 mb-2">
-        {icon && <span className="text-blue-400">{icon}</span>}
+        {icon && <span className="text-blue-600">{icon}</span>}
         {title && (
-          <h3 className="text-lg font-semibold text-neutral-100">{title}</h3>
+          <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
         )}
       </div>
       {description && (
-        <p className="text-sm text-neutral-400 leading-relaxed">{description}</p>
+        <p className="text-sm text-neutral-600 leading-relaxed">{description}</p>
       )}
     </motion.div>
   );

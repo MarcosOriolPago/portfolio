@@ -1,152 +1,126 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { GlowingCard } from "./ui/GlowingCard";
 import { RevealOnScroll } from "./RevealOnScroll";
 import { OptimizedImage } from "./OptimizedImage";
-import { ChevronRight, X, ExternalLink } from "lucide-react";
+import { ChevronRight, ExternalLink } from "lucide-react";
+import { cardTitle, type Project } from "../data/projects";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  link?: string;
-  websiteLink?: string;
-  skills: React.ReactNode;
-  detailedDescription?: React.ReactNode;
-}
+/**
+ * - "wide":    featured, spans two columns
+ * - "tall":    featured, spans two rows; the image grows to fill the height
+ * - "feature": featured, regular size
+ * - "compact": the smaller cards below the featured grid
+ */
+export type CardVariant = "wide" | "tall" | "feature" | "compact";
+
+const imageHeight: Record<CardVariant, string> = {
+  wide: "h-60 lg:h-80",
+  tall: "h-60 lg:h-auto lg:flex-1 lg:min-h-80",
+  feature: "h-60",
+  compact: "h-48",
+};
+
+type ProjectCardProps = Project & { variant?: CardVariant; className?: string };
 
 function ProjectCard({
+  slug,
   title,
   description,
   image,
+  placeholderIcon,
   link,
   websiteLink,
   skills,
   detailedDescription,
+  variant = "compact",
+  className = "",
 }: ProjectCardProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+  const compact = variant === "compact";
 
   return (
-    <>
-      <RevealOnScroll>
-        <GlowingCard className="flex flex-col overflow-hidden">
-          <div className="relative overflow-hidden shrink-0 h-60 lg:h-70">
+    <RevealOnScroll className={`h-full ${className}`}>
+      <GlowingCard className="flex flex-col overflow-hidden">
+        <div className={`relative overflow-hidden shrink-0 ${imageHeight[variant]}`}>
+          {image ? (
             <OptimizedImage
               src={image}
               alt={title}
               fill
+              playOnHover
               quality={70}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes={variant === "wide" ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
-          </div>
+          ) : (
+            <ProjectPlaceholder icon={placeholderIcon} />
+          )}
+        </div>
 
-          <div className="p-6 flex flex-col flex-1">
-            <h3 className="text-2xl font-semibold text-neutral-100 mb-3">
-              {title}
-            </h3>
-            <p className="text-lg text-neutral-300 leading-relaxed mb-6">
-              {description}
-            </p>
+        <div className={`flex flex-col ${compact ? "p-5" : "p-6"} ${variant === "tall" ? "" : "flex-1"}`}>
+          <h3 className={`font-semibold text-neutral-900 mb-2 ${compact ? "text-xl" : "text-2xl"}`}>
+            {detailedDescription ? (
+              <Link href={`/${slug}`} className="hover:text-blue-600 transition-colors">
+                {cardTitle({ title })}
+              </Link>
+            ) : (
+              cardTitle({ title })
+            )}
+          </h3>
+          <p className={`text-neutral-700 leading-relaxed mb-5 ${compact ? "text-sm line-clamp-3" : "text-base"}`}>
+            {description}
+          </p>
 
-            <div className="flex justify-between mt-auto pt-4">
-              {skills}
+          <div className="flex flex-wrap justify-between gap-3 mt-auto pt-2">
+            {skills}
 
-              <div className="flex items-center gap-4">
-                {detailedDescription && (
-                  <button
-                    onClick={() => setIsOpen(true)}
-                    className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
-                  >
-                    <span>Details</span>
-                    <ChevronRight size={16} />
-                  </button>
-                )}
-                {websiteLink && (
-                  <a
-                    href={websiteLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
-                  >
-                    <span>Website</span>
-                    <ExternalLink size={14} />
-                  </a>
-                )}
-                {link && (
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
-                  >
-                    <span>Repo</span>
-                    <ExternalLink size={14} />
-                  </a>
-                )}
-              </div>
+            <div className="flex items-center gap-4">
+              {detailedDescription && (
+                <Link
+                  href={`/${slug}`}
+                  className="flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  <span>Details</span>
+                  <ChevronRight size={16} />
+                </Link>
+              )}
+              {websiteLink && (
+                <a
+                  href={websiteLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-800 transition-colors"
+                >
+                  <span>Website</span>
+                  <ExternalLink size={14} />
+                </a>
+              )}
+              {link && (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-800 transition-colors"
+                >
+                  <span>Repo</span>
+                  <ExternalLink size={14} />
+                </a>
+              )}
             </div>
           </div>
-        </GlowingCard>
-      </RevealOnScroll>
+        </div>
+      </GlowingCard>
+    </RevealOnScroll>
+  );
+}
 
-      {mounted &&
-        createPortal(
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                onClick={() => setIsOpen(false)}
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-2xl border border-white/10 bg-neutral-950 p-8 lg:p-10 scrollbar-hide"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="absolute top-5 right-5 p-2 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
-                  >
-                    <X size={18} />
-                  </button>
-
-                  <h3 className="text-3xl font-bold text-neutral-100 mb-8">
-                    {title}
-                  </h3>
-                  {detailedDescription}
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>,
-          document.body
-        )}
-    </>
+/** Soft gradient with an icon, used when a project has no image yet. */
+export function ProjectPlaceholder({ icon }: { icon?: React.ReactNode }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-cyan-50 text-blue-600/70">
+      {icon}
+    </div>
   );
 }
 
